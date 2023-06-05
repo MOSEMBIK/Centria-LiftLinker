@@ -23,8 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-+ztfo&zr_#t5z#o*q=ps7_h(bmorsjnanf!o5=s_3)@6oj_(5k'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-
-DEBUG = False
+DEBUG = True
 SECURE_HSTS_SECONDS = 60
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
@@ -33,6 +32,7 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 
 ALLOWED_HOSTS = [
+    'liftlinker.mosembik.fr',
     'mohammadkdn.fr',
 ]
 

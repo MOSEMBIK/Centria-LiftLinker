@@ -1,7 +1,9 @@
 from django.shortcuts import render
 
-# Import models
+# Import users models
 from .models import User
+# Import forum models
+from forum.models import Post, Comment
 
 # Import usefull libraries
 import hashlib
