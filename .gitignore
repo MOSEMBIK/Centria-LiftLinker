@@ -1,0 +1,3 @@
+*.pem
+runserver.sh
+_pycache_
