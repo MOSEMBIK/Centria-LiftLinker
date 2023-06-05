@@ -2,16 +2,14 @@ from django.shortcuts import render
 
 # Import users models
 from .models import User
-# Import forum models
-from forum.models import Post, Comment
 
 # Import usefull libraries
 import hashlib
 
 # Create your views here.
 # Index view
-def appindex(request):
-    return render(request, 'appindex.html', {'session': request.session})
+def userindex(request):
+    return render(request, 'userindex.html', {'session': request.session})
 
 # User view
 def user(request, username):

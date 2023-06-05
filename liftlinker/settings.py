@@ -44,6 +44,7 @@ STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
 # Application definition
 
 INSTALLED_APPS = [
+    'main.apps.MainConfig',
     'users.apps.UsersConfig',
     'forum.apps.ForumConfig',
 
