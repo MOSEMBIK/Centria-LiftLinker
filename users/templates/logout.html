@@ -1,0 +1,24 @@
+<!-- Logout page -->
+<p>
+    {{ message }}
+</p>
+
+<!-- count from 4 to 0 seconds -->
+<p>
+    Redirecting to home page in <b><span id="countdown">4</span></b> seconds.
+</p>
+<!-- decrement countdown each seconds -->
+<script>
+    var seconds = 4;
+    setInterval(function () {
+        seconds--;
+        document.getElementById("countdown").textContent = seconds;
+    }, 1000);
+</script>
+
+<!-- Redirection to app/ after 4sec -->
+<script>
+    setTimeout(function () {
+        window.location.href = "/app/";
+    }, 4000);
+</script>
