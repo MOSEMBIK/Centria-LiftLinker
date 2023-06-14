@@ -1,3 +1,6 @@
 *.pem
 runserver.sh
 */__pycache__
+.idea
+venv
+pyenv
