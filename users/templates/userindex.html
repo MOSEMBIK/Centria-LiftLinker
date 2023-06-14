@@ -21,7 +21,11 @@
     {% endif %}
 {% endblock %}
 
-
+{% block body %}
+<br>
+<br>
+<br>
+<br>
 <!-- nav buttons -->
 <a href="{% url 'index' %}">Home</a>
 <a href="{% url 'userindex' %}">Home User</a>
@@ -37,3 +41,4 @@
 <p>
     Hello world !
 </p>
+{% endblock %}

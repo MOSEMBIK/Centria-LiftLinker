@@ -9,7 +9,7 @@
     <meta name="author" content="Mohammad 'MOSEMBIK' KHADDAN">
 
     <title>{% block title %}LiftLinker{% endblock %}</title>
-    <link rel="icon" href="{% static 'img/MK.ico' %}">
+    <link rel="icon" href="{% static 'img/LL.png' %}">
 
 
     {% block stylesheets %}
@@ -52,34 +52,34 @@
 
     </script>
     <span id="loader" style="
-                width: 100%;
-                height: 100%;
-                position: absolute;
-                top: 0;
-                left: 0;
-                background-color: lightgrey;
-                display:flex;
-                justify-content: center;
-                align-items: center;
-                z-index: 1000;"
-    >
-                <img id="loader-img" src="{% static 'img/MK.ico' %}" style="border-radius: 25%; width: 15%;"/>
-            </span>
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #3e364f;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+    ">
+        <img id="loader-img" src="{% static 'img/LL.png' %}" style="width: 15%;"/>
+    </span>
 </div>
 
 {# ------------------------- NAV ------------------------- #}
 <nav class="navbar navbar-expand-lg navbar-light p-3 d-flex w-100"
      style="min-height: 9em; position: fixed; background-color: #514669; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);">
-    <div class="container-fluid d-flex justify-content-between h-100">
-        <a class="d-flex navbar-brand col-4 justify-content-center" href="/">
-            <img style="max-height: 4em; margin: 1% 1% 1% 1%" src="{% static 'img/logo.png' %}">
+    <div class="container-fluid d-flex justify-content-between h-100" >
+        <a class="d-flex navbar-brand col-4 justify-content-center"  style="max-width: 24em; margin-left: 1em;" href="/">
+            <img style="max-width: 24em; margin: 1% 1% 1% 1%;" src="{% static 'img/logo.png' %}">
         </a>
         <button class="navbar-toggler" style="min-width: 4em; min-height: 4em; margin-right: 3em;" type="button"
                 data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
                 aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse p-4" id="navbarNavAltMarkup">
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav d-flex justify-content-center align-items-center col-8 w-100" style="text-align: center;">
                 {% block nav %}
                 <a class="nav-link active" href="{% url 'index' %}"
@@ -98,11 +98,18 @@
 </nav>
 
 {# ------------------------- BODY ------------------------- #}
-<div class="d-flex flex-column flex-grow-1" style="margin-top: 9em; background-color: #514669;">
+<div class="d-flex flex-row flex-grow-1 justify-content-center" style="margin-top: 9em; background-color: #514669;">
+    <div style="background-color: red; width: 300px;">
+        {% block navbar2 %}
 
-    {% block body %}
+        {% endblock %}
+    </div>
+    <div class="justify-center" style="background-color: blue; width: 700px;">
+        {% block body %}
 
-    {% endblock %}
+        {% endblock %}
+    </div>
+    <div style="width: 300px;"></div>
 </div>
 
 {# ------------------------ FOOTER ------------------------ #}
