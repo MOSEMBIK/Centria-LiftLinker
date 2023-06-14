@@ -23,3 +23,6 @@ urlpatterns = [
     path('u/', include('users.urls')),
     path('f/', include('forum.urls')),
 ]
+
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+urlpatterns += staticfiles_urlpatterns()

@@ -1,0 +1,340 @@
+127.0.0.1 - - [13/Jun/2023:08:28:05 +0000] "GET /u/register/ HTTP/1.0" 500 112188 "https://liftlinker.mosembik.fr/u/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
+127.0.0.1 - - [13/Jun/2023:08:30:33 +0000] "GET /u/register/ HTTP/1.0" 200 929 "https://liftlinker.mosembik.fr/u/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
+127.0.0.1 - - [13/Jun/2023:08:30:38 +0000] "GET /u/ HTTP/1.0" 200 331 "https://liftlinker.mosembik.fr/u/register/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
+127.0.0.1 - - [13/Jun/2023:08:30:40 +0000] "GET / HTTP/1.0" 200 152 "https://liftlinker.mosembik.fr/u/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
+127.0.0.1 - - [13/Jun/2023:08:30:42 +0000] "GET /u/ HTTP/1.0" 200 331 "https://liftlinker.mosembik.fr/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
+127.0.0.1 - - [13/Jun/2023:08:30:43 +0000] "GET / HTTP/1.0" 200 152 "https://liftlinker.mosembik.fr/u/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
+127.0.0.1 - - [13/Jun/2023:08:30:44 +0000] "GET /f/ HTTP/1.0" 200 152 "https://liftlinker.mosembik.fr/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
+127.0.0.1 - - [13/Jun/2023:08:30:46 +0000] "GET / HTTP/1.0" 200 152 "https://liftlinker.mosembik.fr/f/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
+127.0.0.1 - - [13/Jun/2023:08:30:47 +0000] "GET /u/ HTTP/1.0" 200 331 "https://liftlinker.mosembik.fr/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
+127.0.0.1 - - [13/Jun/2023:08:30:49 +0000] "GET /u/ HTTP/1.0" 200 331 "https://liftlinker.mosembik.fr/u/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
+127.0.0.1 - - [13/Jun/2023:08:30:51 +0000] "GET /f/ HTTP/1.0" 200 152 "https://liftlinker.mosembik.fr/u/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
+127.0.0.1 - - [13/Jun/2023:08:30:52 +0000] "GET / HTTP/1.0" 200 152 "https://liftlinker.mosembik.fr/f/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
+127.0.0.1 - - [13/Jun/2023:08:30:52 +0000] "GET /f/ HTTP/1.0" 200 152 "https://liftlinker.mosembik.fr/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
+127.0.0.1 - - [13/Jun/2023:08:30:53 +0000] "GET /u/ HTTP/1.0" 200 331 "https://liftlinker.mosembik.fr/f/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
+127.0.0.1 - - [13/Jun/2023:08:30:54 +0000] "GET /u/search_user/ HTTP/1.0" 200 643 "https://liftlinker.mosembik.fr/u/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
+127.0.0.1 - - [13/Jun/2023:08:30:57 +0000] "POST /u/search_user/ HTTP/1.0" 200 630 "https://liftlinker.mosembik.fr/u/search_user/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
+127.0.0.1 - - [13/Jun/2023:08:31:01 +0000] "GET /u/register/ HTTP/1.0" 200 929 "https://liftlinker.mosembik.fr/u/search_user/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
+2023/06/14 08:14:31 [debug] 92454#92454: accept on 0.0.0.0:9980, ready: 0
+2023/06/14 08:14:31 [debug] 92454#92454: posix_memalign: 00005613C87D4000:512 @16
+2023/06/14 08:14:31 [debug] 92454#92454: *119 accept: 212.227.12.112:49616 fd:5
+2023/06/14 08:14:31 [debug] 92454#92454: *119 event timer add: 5: 60000:43682166621
+2023/06/14 08:14:31 [debug] 92454#92454: *119 reusable connection: 1
+2023/06/14 08:14:31 [debug] 92454#92454: *119 epoll add event: fd:5 op:1 ev:80002001
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http check ssl handshake
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http recv(): 1
+2023/06/14 08:14:31 [debug] 92454#92454: *119 https ssl handshake: 0x16
+2023/06/14 08:14:31 [debug] 92454#92454: *119 tcp_nodelay
+2023/06/14 08:14:31 [debug] 92454#92454: *119 reusable connection: 0
+2023/06/14 08:14:31 [debug] 92454#92454: *119 SSL_do_handshake: -1
+2023/06/14 08:14:31 [debug] 92454#92454: *119 SSL_get_error: 2
+2023/06/14 08:14:31 [debug] 92454#92454: *119 SSL handshake handler: 0
+2023/06/14 08:14:31 [debug] 92454#92454: *119 SSL_do_handshake: 1
+2023/06/14 08:14:31 [debug] 92454#92454: *119 SSL: TLSv1.2, cipher: "ECDHE-ECDSA-AES256-GCM-SHA384 TLSv1.2 Kx=ECDH Au=ECDSA Enc=AESGCM(256) Mac=AEAD"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 reusable connection: 1
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http wait request handler
+2023/06/14 08:14:31 [debug] 92454#92454: *119 malloc: 00005613C87D8980:1024
+2023/06/14 08:14:31 [debug] 92454#92454: *119 SSL_read: -1
+2023/06/14 08:14:31 [debug] 92454#92454: *119 SSL_get_error: 2
+2023/06/14 08:14:31 [debug] 92454#92454: *119 free: 00005613C87D8980
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http wait request handler
+2023/06/14 08:14:31 [debug] 92454#92454: *119 malloc: 00005613C87D8980:1024
+2023/06/14 08:14:31 [debug] 92454#92454: *119 SSL_read: 727
+2023/06/14 08:14:31 [debug] 92454#92454: *119 SSL_read: -1
+2023/06/14 08:14:31 [debug] 92454#92454: *119 SSL_get_error: 2
+2023/06/14 08:14:31 [debug] 92454#92454: *119 reusable connection: 0
+2023/06/14 08:14:31 [debug] 92454#92454: *119 posix_memalign: 00005613C87EF5D0:4096 @16
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http process request line
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http request line: "GET /robots.txt HTTP/1.1"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http uri: "/robots.txt"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http args: ""
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http exten: "txt"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 posix_memalign: 00005613C87F8C10:4096 @16
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http process request header line
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http header: "Host: liftlinker.mosembik.fr"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http header: "X-Forwarded-Scheme: https"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http header: "X-Forwarded-Proto: https"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http header: "X-Forwarded-For: 195.148.180.233, 162.158.238.237"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http header: "X-Real-IP: 162.158.238.237"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http header: "Connection: close"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http header: "cf-connecting-ip: 195.148.180.233"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http header: "cf-ipcountry: FI"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http header: "accept-encoding: gzip"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http header: "cf-ray: 7d706efe5966fe40-HEL"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http header: "cf-visitor: {"scheme":"https"}"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http header: "user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http header: "accept: */*"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http header: "sec-gpc: 1"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http header: "accept-language: fr-FR,fr"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http header: "sec-fetch-site: none"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http header: "sec-fetch-mode: cors"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http header: "sec-fetch-dest: empty"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http header: "priority: u=1, i"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http header: "cdn-loop: cloudflare"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http header: "cookie: csrftoken=OvGjPdRmt1lhsIiMrCGX5GaxT0N3touY; sessionid=b1zdh7yje27dvs31tbgw8gsv7xvy8gog"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http header done
+2023/06/14 08:14:31 [debug] 92454#92454: *119 event timer del: 5: 43682166621
+2023/06/14 08:14:31 [debug] 92454#92454: *119 generic phase: 0
+2023/06/14 08:14:31 [debug] 92454#92454: *119 rewrite phase: 1
+2023/06/14 08:14:31 [debug] 92454#92454: *119 test location: "/"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 test location: "static/"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 test location: "media/"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 using configuration "/"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http cl:-1 max:1048576
+2023/06/14 08:14:31 [debug] 92454#92454: *119 rewrite phase: 3
+2023/06/14 08:14:31 [debug] 92454#92454: *119 post rewrite phase: 4
+2023/06/14 08:14:31 [debug] 92454#92454: *119 generic phase: 5
+2023/06/14 08:14:31 [debug] 92454#92454: *119 generic phase: 6
+2023/06/14 08:14:31 [debug] 92454#92454: *119 generic phase: 7
+2023/06/14 08:14:31 [debug] 92454#92454: *119 access phase: 8
+2023/06/14 08:14:31 [debug] 92454#92454: *119 access phase: 9
+2023/06/14 08:14:31 [debug] 92454#92454: *119 access phase: 10
+2023/06/14 08:14:31 [debug] 92454#92454: *119 access phase: 11
+2023/06/14 08:14:31 [debug] 92454#92454: *119 post access phase: 12
+2023/06/14 08:14:31 [debug] 92454#92454: *119 generic phase: 13
+2023/06/14 08:14:31 [debug] 92454#92454: *119 generic phase: 14
+2023/06/14 08:14:31 [debug] 92454#92454: *119 generic phase: 15
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http init upstream, client timer: 0
+2023/06/14 08:14:31 [debug] 92454#92454: *119 epoll add event: fd:5 op:3 ev:80002005
+2023/06/14 08:14:31 [debug] 92454#92454: *119 posix_memalign: 00005613C88923D0:4096 @16
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http script copy: ""
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http script copy: "X-Real-IP"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http script var: "212.227.12.112"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http script copy: "Host"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http script var: "0.0.0.0:19980"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http script copy: "Connection"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http script copy: "close"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http script copy: ""
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http script copy: ""
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http proxy header: "X-Forwarded-Scheme: https"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http proxy header: "X-Forwarded-Proto: https"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http proxy header: "X-Forwarded-For: 195.148.180.233, 162.158.238.237"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http proxy header: "cf-connecting-ip: 195.148.180.233"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http proxy header: "cf-ipcountry: FI"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http proxy header: "accept-encoding: gzip"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http proxy header: "cf-ray: 7d706efe5966fe40-HEL"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http proxy header: "cf-visitor: {"scheme":"https"}"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http proxy header: "user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http proxy header: "accept: */*"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http proxy header: "sec-gpc: 1"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http proxy header: "accept-language: fr-FR,fr"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http proxy header: "sec-fetch-site: none"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http proxy header: "sec-fetch-mode: cors"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http proxy header: "sec-fetch-dest: empty"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http proxy header: "priority: u=1, i"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http proxy header: "cdn-loop: cloudflare"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http proxy header: "cookie: csrftoken=OvGjPdRmt1lhsIiMrCGX5GaxT0N3touY; sessionid=b1zdh7yje27dvs31tbgw8gsv7xvy8gog"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http proxy header:
+"GET /robots.txt HTTP/1.0
+X-Real-IP: 212.227.12.112
+Host: 0.0.0.0:19980
+Connection: close
+X-Forwarded-Scheme: https
+X-Forwarded-Proto: https
+X-Forwarded-For: 195.148.180.233, 162.158.238.237
+cf-connecting-ip: 195.148.180.233
+cf-ipcountry: FI
+accept-encoding: gzip
+cf-ray: 7d706efe5966fe40-HEL
+cf-visitor: {"scheme":"https"}
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36
+accept: */*
+sec-gpc: 1
+accept-language: fr-FR,fr
+sec-fetch-site: none
+sec-fetch-mode: cors
+sec-fetch-dest: empty
+priority: u=1, i
+cdn-loop: cloudflare
+cookie: csrftoken=OvGjPdRmt1lhsIiMrCGX5GaxT0N3touY; sessionid=b1zdh7yje27dvs31tbgw8gsv7xvy8gog
+
+"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http cleanup add: 00005613C87F99C8
+2023/06/14 08:14:31 [debug] 92454#92454: *119 get rr peer, try: 1
+2023/06/14 08:14:31 [debug] 92454#92454: *119 stream socket 9
+2023/06/14 08:14:31 [debug] 92454#92454: *119 epoll add connection: fd:9 ev:80002005
+2023/06/14 08:14:31 [debug] 92454#92454: *119 connect to 0.0.0.0:19980, fd:9 #120
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http upstream connect: -2
+2023/06/14 08:14:31 [debug] 92454#92454: *119 posix_memalign: 00005613C87FB820:128 @16
+2023/06/14 08:14:31 [debug] 92454#92454: *119 event timer add: 9: 60000:43682166625
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http finalize request: -4, "/robots.txt?" a:1, c:2
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http request count:2 blk:0
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http run request: "/robots.txt?"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http upstream check client, write event:1, "/robots.txt"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http upstream request: "/robots.txt?"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http upstream send request handler
+2023/06/14 08:14:31 [debug] 92454#92454: *119 malloc: 00005613C88810B0:88
+2023/06/14 08:14:31 [debug] 92454#92454: *119 set session: 00005613C87FC120
+2023/06/14 08:14:31 [debug] 92454#92454: *119 tcp_nodelay
+2023/06/14 08:14:31 [debug] 92454#92454: *119 SSL_do_handshake: -1
+2023/06/14 08:14:31 [debug] 92454#92454: *119 SSL_get_error: 2
+2023/06/14 08:14:31 [debug] 92454#92454: *119 SSL handshake handler: 0
+2023/06/14 08:14:31 [debug] 92454#92454: *119 SSL_do_handshake: -1
+2023/06/14 08:14:31 [debug] 92454#92454: *119 SSL_get_error: 2
+2023/06/14 08:14:31 [debug] 92454#92454: *119 SSL handshake handler: 1
+2023/06/14 08:14:31 [debug] 92454#92454: *119 SSL_do_handshake: -1
+2023/06/14 08:14:31 [debug] 92454#92454: *119 SSL_get_error: 2
+2023/06/14 08:14:31 [debug] 92454#92454: *119 SSL handshake handler: 0
+2023/06/14 08:14:31 [debug] 92454#92454: *119 save session: 00005613C87FA5A0
+2023/06/14 08:14:31 [debug] 92454#92454: *119 old session: 00005613C87FC120
+2023/06/14 08:14:31 [debug] 92454#92454: *119 SSL_do_handshake: 1
+2023/06/14 08:14:31 [debug] 92454#92454: *119 SSL: TLSv1.2, cipher: "ECDHE-ECDSA-AES256-GCM-SHA384 TLSv1.2 Kx=ECDH Au=ECDSA Enc=AESGCM(256) Mac=AEAD"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http upstream ssl handshake: "/robots.txt?"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http upstream send request
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http upstream send request body
+2023/06/14 08:14:31 [debug] 92454#92454: *119 chain writer buf fl:1 s:717
+2023/06/14 08:14:31 [debug] 92454#92454: *119 chain writer in: 00005613C87F05C0
+2023/06/14 08:14:31 [debug] 92454#92454: *119 malloc: 00005613C8894210:80
+2023/06/14 08:14:31 [debug] 92454#92454: *119 malloc: 00005613C8882340:16384
+2023/06/14 08:14:31 [debug] 92454#92454: *119 SSL buf copy: 717
+2023/06/14 08:14:31 [debug] 92454#92454: *119 SSL to write: 717
+2023/06/14 08:14:31 [debug] 92454#92454: *119 SSL_write: 717
+2023/06/14 08:14:31 [debug] 92454#92454: *119 chain writer out: 0000000000000000
+2023/06/14 08:14:31 [debug] 92454#92454: *119 event timer del: 9: 43682166625
+2023/06/14 08:14:31 [debug] 92454#92454: *119 event timer add: 9: 60000:43682166637
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http upstream process header
+2023/06/14 08:14:31 [debug] 92454#92454: *119 malloc: 00005613C887F880:4096
+2023/06/14 08:14:31 [debug] 92454#92454: *119 SSL_read: -1
+2023/06/14 08:14:31 [debug] 92454#92454: *119 SSL_get_error: 2
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http upstream request: "/robots.txt?"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http upstream dummy handler
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http upstream request: "/robots.txt?"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http upstream process header
+2023/06/14 08:14:31 [debug] 92454#92454: *119 SSL_read: 355
+2023/06/14 08:14:31 [debug] 92454#92454: *119 SSL_read: -1
+2023/06/14 08:14:31 [debug] 92454#92454: *119 SSL_get_error: 2
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http proxy status 404 "404 Not Found"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http proxy header: "Server: gunicorn"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http proxy header: "Date: Wed, 14 Jun 2023 06:14:31 GMT"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http proxy header: "Connection: close"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http proxy header: "Content-Type: text/html; charset=utf-8"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http proxy header: "X-Frame-Options: DENY"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http proxy header: "Content-Length: 179"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http proxy header: "Strict-Transport-Security: max-age=60; includeSubDomains; preload"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http proxy header: "X-Content-Type-Options: nosniff"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http proxy header: "Referrer-Policy: same-origin"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http proxy header: "Cross-Origin-Opener-Policy: same-origin"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http proxy header done
+127.0.0.1 - - [14/Jun/2023:06:14:31 +0000] "GET /robots.txt HTTP/1.0" 404 179 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 xslt filter header
+2023/06/14 08:14:31 [debug] 92454#92454: *119 HTTP/1.1 404 Not Found
+Server: nginx/1.18.0
+Date: Wed, 14 Jun 2023 06:14:31 GMT
+Content-Type: text/html; charset=utf-8
+Transfer-Encoding: chunked
+Connection: close
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=60; includeSubDomains; preload
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+Cross-Origin-Opener-Policy: same-origin
+Content-Encoding: gzip
+
+2023/06/14 08:14:31 [debug] 92454#92454: *119 write new buf t:1 f:0 00005613C8892B88, pos 00005613C8892B88, size: 390 file: 0, size: 0
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http write filter: l:0 f:0 s:390
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http cacheable: 0
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http proxy filter init s:404 h:0 c:0 l:179
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http upstream process upstream
+2023/06/14 08:14:31 [debug] 92454#92454: *119 pipe read upstream: 0
+2023/06/14 08:14:31 [debug] 92454#92454: *119 pipe preread: 0
+2023/06/14 08:14:31 [debug] 92454#92454: *119 pipe buf free s:0 t:1 f:0 00005613C887F880, pos 00005613C887F9E3, size: 0 file: 0, size: 0
+2023/06/14 08:14:31 [debug] 92454#92454: *119 pipe length: 179
+2023/06/14 08:14:31 [debug] 92454#92454: *119 event timer: 9, old: 43682166637, new: 43682166645
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http upstream request: "/robots.txt?"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http upstream dummy handler
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http upstream request: "/robots.txt?"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http upstream process upstream
+2023/06/14 08:14:31 [debug] 92454#92454: *119 pipe read upstream: 1
+2023/06/14 08:14:31 [debug] 92454#92454: *119 SSL_read: 179
+2023/06/14 08:14:31 [debug] 92454#92454: *119 SSL_read: 0
+2023/06/14 08:14:31 [debug] 92454#92454: *119 SSL_get_error: 5
+2023/06/14 08:14:31 [debug] 92454#92454: *119 peer shutdown SSL cleanly
+2023/06/14 08:14:31 [debug] 92454#92454: *119 pipe recv chain: 179
+2023/06/14 08:14:31 [debug] 92454#92454: *119 pipe recv chain: 0
+2023/06/14 08:14:31 [debug] 92454#92454: *119 pipe buf free s:0 t:1 f:0 00005613C887F880, pos 00005613C887F9E3, size: 179 file: 0, size: 0
+2023/06/14 08:14:31 [debug] 92454#92454: *119 pipe length: 179
+2023/06/14 08:14:31 [debug] 92454#92454: *119 input buf #0
+2023/06/14 08:14:31 [debug] 92454#92454: *119 pipe write downstream: 1
+2023/06/14 08:14:31 [debug] 92454#92454: *119 pipe write downstream flush in
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http output filter "/robots.txt?"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http copy filter: "/robots.txt?"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 image filter
+2023/06/14 08:14:31 [debug] 92454#92454: *119 xslt filter body
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http postpone filter "/robots.txt?" 00005613C8892E38
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http gzip filter
+2023/06/14 08:14:31 [debug] 92454#92454: *119 malloc: 00005613C8886350:12288
+2023/06/14 08:14:31 [debug] 92454#92454: *119 gzip alloc: n:1 s:5952 a:8192 p:00005613C8886350
+2023/06/14 08:14:31 [debug] 92454#92454: *119 gzip alloc: n:512 s:2 a:1024 p:00005613C8888350
+2023/06/14 08:14:31 [debug] 92454#92454: *119 gzip alloc: n:512 s:2 a:1024 p:00005613C8888750
+2023/06/14 08:14:31 [debug] 92454#92454: *119 gzip alloc: n:512 s:2 a:1024 p:00005613C8888B50
+2023/06/14 08:14:31 [debug] 92454#92454: *119 gzip alloc: n:256 s:4 a:1024 p:00005613C8888F50
+2023/06/14 08:14:31 [debug] 92454#92454: *119 gzip in: 00005613C8892E28
+2023/06/14 08:14:31 [debug] 92454#92454: *119 gzip in_buf:00005613C8892E48 ni:00005613C887F9E3 ai:179
+2023/06/14 08:14:31 [debug] 92454#92454: *119 malloc: 00005613C8889730:4096
+2023/06/14 08:14:31 [debug] 92454#92454: *119 deflate in: ni:00005613C887F9E3 no:00005613C8889730 ai:179 ao:4096 fl:0 redo:0
+2023/06/14 08:14:31 [debug] 92454#92454: *119 deflate out: ni:00005613C887FA96 no:00005613C888973A ai:0 ao:4086 rc:0
+2023/06/14 08:14:31 [debug] 92454#92454: *119 gzip in_buf:00005613C8892E48 pos:00005613C887F9E3
+2023/06/14 08:14:31 [debug] 92454#92454: *119 gzip in: 0000000000000000
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http copy filter: 0 "/robots.txt?"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 pipe write downstream done
+2023/06/14 08:14:31 [debug] 92454#92454: *119 event timer: 9, old: 43682166637, new: 43682166649
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http upstream exit: 0000000000000000
+2023/06/14 08:14:31 [debug] 92454#92454: *119 finalize http upstream request: 0
+2023/06/14 08:14:31 [debug] 92454#92454: *119 finalize http proxy request
+2023/06/14 08:14:31 [debug] 92454#92454: *119 free rr peer 1 0
+2023/06/14 08:14:31 [debug] 92454#92454: *119 SSL_shutdown: 1
+2023/06/14 08:14:31 [debug] 92454#92454: *119 close http upstream connection: 9
+2023/06/14 08:14:31 [debug] 92454#92454: *119 free: 00005613C8882340
+2023/06/14 08:14:31 [debug] 92454#92454: *119 free: 00005613C8894210
+2023/06/14 08:14:31 [debug] 92454#92454: *119 free: 00005613C88810B0
+2023/06/14 08:14:31 [debug] 92454#92454: *119 free: 00005613C87FB820, unused: 0
+2023/06/14 08:14:31 [debug] 92454#92454: *119 event timer del: 9: 43682166637
+2023/06/14 08:14:31 [debug] 92454#92454: *119 reusable connection: 0
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http upstream temp fd: -1
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http output filter "/robots.txt?"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http copy filter: "/robots.txt?"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 image filter
+2023/06/14 08:14:31 [debug] 92454#92454: *119 xslt filter body
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http postpone filter "/robots.txt?" 00007FFFB94956A0
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http gzip filter
+2023/06/14 08:14:31 [debug] 92454#92454: *119 gzip in: 00005613C8892E28
+2023/06/14 08:14:31 [debug] 92454#92454: *119 gzip in_buf:00005613C8892F90 ni:0000000000000000 ai:0
+2023/06/14 08:14:31 [debug] 92454#92454: *119 deflate in: ni:0000000000000000 no:00005613C888973A ai:0 ao:4086 fl:4 redo:0
+2023/06/14 08:14:31 [debug] 92454#92454: *119 deflate out: ni:0000000000000000 no:00005613C88897C4 ai:0 ao:3948 rc:1
+2023/06/14 08:14:31 [debug] 92454#92454: *119 gzip in_buf:00005613C8892F90 pos:0000000000000000
+2023/06/14 08:14:31 [debug] 92454#92454: *119 free: 00005613C8886350
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http chunk: 148
+2023/06/14 08:14:31 [debug] 92454#92454: *119 write old buf t:1 f:0 00005613C8892B88, pos 00005613C8892B88, size: 390 file: 0, size: 0
+2023/06/14 08:14:31 [debug] 92454#92454: *119 write new buf t:1 f:0 00005613C8893050, pos 00005613C8893050, size: 4 file: 0, size: 0
+2023/06/14 08:14:31 [debug] 92454#92454: *119 write new buf t:1 f:0 00005613C8889730, pos 00005613C8889730, size: 148 file: 0, size: 0
+2023/06/14 08:14:31 [debug] 92454#92454: *119 write new buf t:0 f:0 0000000000000000, pos 00005613C7EEBB15, size: 7 file: 0, size: 0
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http write filter: l:1 f:1 s:549
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http write filter limit 0
+2023/06/14 08:14:31 [debug] 92454#92454: *119 posix_memalign: 00005613C87F2980:512 @16
+2023/06/14 08:14:31 [debug] 92454#92454: *119 malloc: 00005613C8882340:16384
+2023/06/14 08:14:31 [debug] 92454#92454: *119 SSL buf copy: 390
+2023/06/14 08:14:31 [debug] 92454#92454: *119 SSL buf copy: 4
+2023/06/14 08:14:31 [debug] 92454#92454: *119 SSL buf copy: 148
+2023/06/14 08:14:31 [debug] 92454#92454: *119 SSL buf copy: 7
+2023/06/14 08:14:31 [debug] 92454#92454: *119 SSL to write: 549
+2023/06/14 08:14:31 [debug] 92454#92454: *119 SSL_write: 549
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http write filter 0000000000000000
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http copy filter: 0 "/robots.txt?"
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http finalize request: 0, "/robots.txt?" a:1, c:1
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http request count:1 blk:0
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http close request
+2023/06/14 08:14:31 [debug] 92454#92454: *119 http log handler
+2023/06/14 08:14:31 [debug] 92454#92454: *119 geoip2 http log handler
+2023/06/14 08:14:31 [debug] 92454#92454: *119 free: 00005613C8889730
+2023/06/14 08:14:31 [debug] 92454#92454: *119 free: 0000000000000000
+2023/06/14 08:14:31 [debug] 92454#92454: *119 free: 00005613C887F880
+2023/06/14 08:14:31 [debug] 92454#92454: *119 free: 00005613C87EF5D0, unused: 0
+2023/06/14 08:14:31 [debug] 92454#92454: *119 free: 00005613C87F8C10, unused: 2
+2023/06/14 08:14:31 [debug] 92454#92454: *119 free: 00005613C88923D0, unused: 493
+2023/06/14 08:14:31 [debug] 92454#92454: *119 close http connection: 5
+2023/06/14 08:14:31 [debug] 92454#92454: *119 SSL_shutdown: 1
+2023/06/14 08:14:31 [debug] 92454#92454: *119 reusable connection: 0
+2023/06/14 08:14:31 [debug] 92454#92454: *119 free: 00005613C8882340
+2023/06/14 08:14:31 [debug] 92454#92454: *119 free: 00005613C87D8980
+2023/06/14 08:14:31 [debug] 92454#92454: *119 free: 00005613C87D4000, unused: 32
+2023/06/14 08:14:31 [debug] 92454#92454: *119 free: 00005613C87F2980, unused: 400

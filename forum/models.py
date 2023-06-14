@@ -4,6 +4,8 @@ from django.db import models
 class Post(models.Model):
     postID = models.AutoField(primary_key=True)
 
+    status = models.IntegerField(default=0) # 0 = open, 1 = closed
+
     author = models.CharField(max_length=25)
     title = models.TextField(max_length=60)
     content = models.TextField(max_length=3000)
@@ -21,7 +23,7 @@ class Comment(models.Model):
     parentID = models.IntegerField(default=0)
 
     author = models.CharField(max_length=25)
-    content = models.TextField(max_length=2000)
+    content = models.TextField(max_length=2500)
     date = models.DateTimeField(auto_now_add=True)
 
     upvotes = models.IntegerField(default=0)

@@ -23,17 +23,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-+ztfo&zr_#t5z#o*q=ps7_h(bmorsjnanf!o5=s_3)@6oj_(5k'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False 
 SECURE_HSTS_SECONDS = 60
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
 SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
+CSRF_TRUSTED_ORIGINS=['https://liftlinker.mosembik.fr']
 CSRF_COOKIE_SECURE = True
 
 ALLOWED_HOSTS = [
     'liftlinker.mosembik.fr',
-    'mohammadkdn.fr',
+    #'82.165.241.91',
+    '0.0.0.0',
 ]
 
 STATIC_URL = 'static/'
@@ -54,7 +56,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    
     'django_extensions',
 ]
 
