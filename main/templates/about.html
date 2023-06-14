@@ -1,0 +1,16 @@
+<p>
+    {% if session.username %}
+        Logged in as <b style="color: red;">{{ session.username }}</b>
+    {% endif %}
+</p>
+
+<!-- nav buttons -->
+<a href="{% url 'index' %}">Home</a>
+<a href="{% url 'userindex' %}">Users</a>
+<a href="{% url 'forumindex' %}">Forum</a>
+
+<h1>Home page</h1>
+
+<p>
+    Hello world !
+</p>
