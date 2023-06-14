@@ -1,16 +1,22 @@
-<p>
+{% extends 'base.html' %}
+
+{% block title %}Forum - LiftLinker{% endblock %}
+
+{% block nav %}
+    <a class="nav-link active" href="{% url 'index' %}"
+        style="font-size: 32px; font-family: 'Days One', sans-serif; color: #a1dce9; margin-right: 1.5em;">Home</a>
+    <a class="nav-link hoverlink" href="{% url 'forumindex' %}"
+        style="font-size: 32px; font-family: 'Days One', sans-serif; color: #FDA8FF; margin-left: 1.5em; margin-right: 1.5em;">Forum</a>
+    <a class="nav-link hoverlink" href="{% url 'about' %}"
+        style="font-size: 32px; font-family: 'Days One', sans-serif; color: #a1dce9; margin-left: 1.5em; margin-right: 1.5em;">About</a>
+        
+    <div style="background-color: white; width: 4px; height: 2em; margin-left: 1.5em; margin-right: 1.5em;"></div>
+    
     {% if session.username %}
-        Logged in as <b style="color: red;">{{ session.username }}</b>
+        <a class="nav-link hoverlink" href="{% url 'userindex' %}"
+            style="font-size: 32px; font-family: 'Days One', sans-serif; color: white; margin-left: 1.5em;">{{ session.username }}</a>
+    {% else %}
+        <a class="nav-link hoverlink" href="{% url 'userindex' %}"
+            style="font-size: 32px; font-family: 'Days One', sans-serif; color: white; margin-left: 1.5em;">Login</a>
     {% endif %}
-</p>
-
-<!-- nav buttons -->
-<a href="{% url 'index' %}">Home</a>
-<a href="{% url 'userindex' %}">Users</a>
-<a href="{% url 'forumindex' %}">Forum</a>
-
-<h1>Home page</h1>
-
-<p>
-    Hello world !
-</p>
+{% endblock %}

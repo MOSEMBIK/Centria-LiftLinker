@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html {% block htmlLang %} lang="fr" {% endblock %}
+      class="d-flex flex-column" style="min-height: 100%;">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="description"
+          content="Site LiftLinker.">
+    <meta name="author" content="Mohammad 'MOSEMBIK' KHADDAN">
+
+    <title>{% block title %}LiftLinker{% endblock %}</title>
+    <link rel="icon" href="{% static 'img/MK.ico' %}">
+
+
+    {% block stylesheets %}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Days+One&display=swap">
+    {% endblock %}
+
+    <style>
+            .hoverlink:hover{
+                text-decoration: none;
+                color: #FDA8FF !important;
+            }
+
+    </style>
+
+    {% block javascripts %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    {% endblock %}
+</head>
+<body class="d-flex flex-column flex-grow-1 bg-light" style="font-family: Georgia;">
+{# ------------------------ LOADER ----------------------- #}
+<div>
+    <script>
+                window.onload = function(){
+                    var fadeTarget = document.getElementById("loader");
+                    var sizeTarget = document.getElementById("loader-img");
+                    var fadeEffect = setInterval(function () {
+                        if (!fadeTarget.style.opacity) {
+                            fadeTarget.style.opacity = 1;
+                        }
+                        if (fadeTarget.style.opacity > 0) {
+                            fadeTarget.style.opacity -= 0.05;
+                            sizeTarget.style.width = (parseInt(sizeTarget.style.width)+1.5).toString() + "%";
+                        } else {
+                            clearInterval(fadeEffect);
+                            fadeTarget.style.zIndex = -1000
+                        }
+                    }, 30);
+                };
+
+    </script>
+    <span id="loader" style="
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-color: lightgrey;
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 1000;"
+    >
+                <img id="loader-img" src="{% static 'img/MK.ico' %}" style="border-radius: 25%; width: 15%;"/>
+            </span>
+</div>
+
+{# ------------------------- NAV ------------------------- #}
+<nav class="navbar navbar-expand-lg navbar-light p-3 d-flex w-100"
+     style="min-height: 9em; position: fixed; background-color: #514669; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);">
+    <div class="container-fluid d-flex justify-content-between h-100">
+        <a class="d-flex navbar-brand col-4 justify-content-center" href="/">
+            <img style="max-height: 4em; margin: 1% 1% 1% 1%" src="{% static 'img/logo.png' %}">
+        </a>
+        <button class="navbar-toggler" style="min-width: 4em; min-height: 4em; margin-right: 3em;" type="button"
+                data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse p-4" id="navbarNavAltMarkup">
+            <div class="navbar-nav d-flex justify-content-center align-items-center col-8 w-100" style="text-align: center;">
+                {% block nav %}
+                <a class="nav-link active" href="{% url 'index' %}"
+                   style="font-size: 32px; font-family: 'Days One', sans-serif; color: #FDA8FF; margin-right: 1.5em;">Home</a>
+                <a class="nav-link hoverlink" href="{% url 'forumindex' %}"
+                   style="font-size: 32px; font-family: 'Days One', sans-serif; color: #a1dce9; margin-left: 1.5em; margin-right: 1.5em;">Forum</a>
+                <a class="nav-link hoverlink" href="{% url 'about' %}"
+                   style="font-size: 32px; font-family: 'Days One', sans-serif; color: #a1dce9; margin-left: 1.5em; margin-right: 1.5em;">About</a>
+                <div style="background-color: white; width: 4px; height: 2em; margin-left: 1.5em; margin-right: 1.5em;"></div>
+                <a class="nav-link hoverlink" href="{% url 'userindex' %}"
+                   style="font-size: 32px; font-family: 'Days One', sans-serif; color: white; margin-left: 1.5em;">Login</a>
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</nav>
+
+{# ------------------------- BODY ------------------------- #}
+<div class="d-flex flex-column flex-grow-1" style="margin-top: 9em; background-color: #514669;">
+
+    {% block body %}
+
+    {% endblock %}
+</div>
+
+{# ------------------------ FOOTER ------------------------ #}
+<footer class="d-flex flex-row justify-content-center justify-content-evenly p-2 w-100"
+        style="background-color: #3e364f; min-height: 5em;">
+    {% block footer %}
+
+    {% endblock %}
+</footer>
+
+<div style="display: none;">
+    {% block tags %}
+    <b>Mohammad</b> <strong><b>Mohammad KHADDAN</b> MohammadKHADDAN Mohamad</strong> Khadan Mohammadkdn <b>khaddan</b>
+    Mohmmad Khad
+    {% endblock %}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+</html>
