@@ -11,6 +11,9 @@ class Post(models.Model):
     content = models.TextField(max_length=3000)
     date = models.DateTimeField(auto_now_add=True)
 
+    category = models.TextField(max_length=60, default="")
+    subcategory = models.TextField(max_length=60, default="")
+
     upvotes = models.IntegerField(default=0)
     downvotes = models.IntegerField(default=0)
     

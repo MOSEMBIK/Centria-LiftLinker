@@ -19,6 +19,6 @@
 <!-- Redirection to app/ after 4sec -->
 <script>
     setTimeout(function () {
-        window.location.href = "/app/";
+        window.location.href = "{% url 'index' %}";
     }, 4000);
 </script>

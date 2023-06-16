@@ -5,4 +5,4 @@ from .models import Post, Comment
 
 # Create your views here.
 def forumindex(request):
-    return render(request, 'forumindex.html')
+    return render(request, 'forumindex.html', {'session': request.session})

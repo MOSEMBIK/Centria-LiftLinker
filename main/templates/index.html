@@ -1,36 +1,71 @@
 {% extends 'base.html' %}
 
-{% block title %}Home - LiftLinker{% endblock %}
+{% block title %}LiftLinker{% endblock %}
 
 {% block nav %}
-    <a class="nav-link active" href="{% url 'index' %}"
-        style="font-size: 32px; font-family: 'Days One', sans-serif; color: #FDA8FF; margin-right: 1.5em;">Home</a>
+    <a class="nav-link hoverlink" href="{% url 'index' %}"
+        style="color: #FDA8FF;  margin-left: 1.5em; margin-right: 1.5em;">Home</a>
     <a class="nav-link hoverlink" href="{% url 'forumindex' %}"
-        style="font-size: 32px; font-family: 'Days One', sans-serif; color: #a1dce9; margin-left: 1.5em; margin-right: 1.5em;">Forum</a>
+        style="color: #a1dce9; margin-left: 1.5em; margin-right: 1.5em;">Forum</a>
     <a class="nav-link hoverlink" href="{% url 'about' %}"
-        style="font-size: 32px; font-family: 'Days One', sans-serif; color: #a1dce9; margin-left: 1.5em; margin-right: 1.5em;">About</a>
+        style="color: #a1dce9; margin-left: 1.5em; margin-right: 1.5em;">About</a>
         
     <div style="background-color: white; width: 4px; height: 2em; margin-left: 1.5em; margin-right: 1.5em;"></div>
     
     {% if session.username %}
         <a class="nav-link hoverlink" href="{% url 'userindex' %}"
-            style="font-size: 32px; font-family: 'Days One', sans-serif; color: white; margin-left: 1.5em;">{{ session.username }}</a>
+            style="color: #ffffff;  margin-left: 1.5em; margin-right: 1.5em;">{{ session.username }}</a>
     {% else %}
         <a class="nav-link hoverlink" href="{% url 'userindex' %}"
-            style="font-size: 32px; font-family: 'Days One', sans-serif; color: white; margin-left: 1.5em;">Login</a>
+            style="color: #ffffff;  margin-left: 1.5em; margin-right: 1.5em;">Login</a>
     {% endif %}
 {% endblock %}
 
 
+{% block navbar2 %}
+    <a class="nav-link hoverlink" onclick="switch_body('updates')" style="color: #A1DCE9; text-decoration: underline; margin-right: .5em;">Updates</a>
+    <a class="nav-link hoverlink" onclick="switch_body('news')" style="color: #ffffff; margin-right: .5em;">News</a>
+    <a class="nav-link hoverlink" onclick="switch_body('places')" style="color: #ffffff; margin-right: .5em;">Places</a>
+{% endblock %}
 
-<p>
-    {% if session.username %}
-        Logged in as <b style="color: red;">{{ session.username }}</b>
-    {% endif %}
-</p>
 
-<h1>Home page</h1>
+{% block body %}
+    <script>
+        function switch_body(div_to_use) {
+            if (div_to_use == 'updates') {
+                document.getElementById('body-updates').style.visibility.visible;
+                document.getElementById('body-news').style.visibility.hidden;
+                document.getElementById('body-places').style.visibility.hidden;
 
-<p>
-    Hello world !
-</p>
+            } else if (div_to_use == 'news') {
+                document.getElementById('body-updates').style.visibility.hidden;
+                document.getElementById('body-news').style.visibility.visible;
+                document.getElementById('body-places').style.visibility.hidden;
+
+            } else if (div_to_use == 'places') {
+                document.getElementById('body-updates').style.visibility.hidden;
+                document.getElementById('body-news').style.visibility.hidden;
+                document.getElementById('body-places').style.visibility.visible;
+                
+            }
+        }
+    </script>
+
+    <div class="h-100 w-100" id="body-updates" style="visibility: visible;">
+        <h1>
+            Update
+        </h1>
+    </div>
+
+    <div class="h-100 w-100" id="body-news" style="visibility: hidden;">
+        <h1>
+            News
+        </h1>
+    </div>
+
+    <div class="h-100 w-100" id="body-places" style="visibility: hidden;">
+        <h1>
+            Places
+        </h1>
+    </div>
+{% endblock %}

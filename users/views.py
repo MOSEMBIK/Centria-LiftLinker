@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Import users models
 from .models import User
@@ -9,19 +9,37 @@ import hashlib
 # Create your views here.
 # Index view
 def userindex(request):
-    return render(request, 'userindex.html', {'session': request.session})
+    if request.session.get('username') :
+        user = User.objects.get(username=request.session.get('username'))
+        return render(request, 'userindex.html', {'user': user, 'session': request.session, 'user_profil': True})
+    else :
+        return redirect('login')
 
 # User view
 def user(request, username):
     user = User.objects.get(username=username)
-    return render(request, 'user.html', {'user': user, 'session': request.session})
+    if username == request.session.get('username') :
+        return redirect('userindex')
+    else :
+        return render(request, 'userindex.html', {'user': user, 'session': request.session, 'user_profil': False})
+        
+# User Settings view
+def usersettings(request):
+    if request.session.get('username') :
+        user = User.objects.get(username=request.session.get('username'))
+        return render(request, 'usersettings.html', {'user': user, 'session': request.session})
 
+    return redirect('userindex')
+
+# Serching user
 def search_user(request):
     if request.method == 'POST':
         username = request.POST['username']
         try:
             user = User.objects.get(username=username)
-            return render(request, 'user.html', {'user': user, 'session': request.session})
+            if request.session.get('username') and request.session.get('username') == username :
+                return render(request, 'userindex.html', {'user': user, 'session': request.session, 'user_profil': True})
+            return render(request, 'userindex.html', {'user': user, 'session': request.session, 'user_profil': False})
         except:
             return render(request, 'user_search.html', {'message': 'User not found', 'session': request.session})
     else:
@@ -58,6 +76,7 @@ def register(request):
 def login(request):
     if request.session.get('username') :
         return render(request, 'login.html', {'message': 'You are aleready logged in.', 'isLogged': True})
+
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -70,7 +89,7 @@ def login(request):
         if user.password == hashed_password:
             # create session
             request.session['username'] = username
-            return render(request, 'login.html', {'message': 'User logged in successfully'})
+            return redirect('userindex')
         else:
             return render(request, 'login.html', {'message': 'Wrong password'})
     else:
@@ -80,9 +99,9 @@ def login(request):
 def logout(request):
     if request.session.get('username') :
         del request.session['username']
-        return render(request, 'logout.html', {'message': 'User logged out successfully'})
+        return redirect('index')
     else:
-        return render(request, 'logout.html', {'message': 'You are not logged in.'})
+        return redirect('index')
     
 # Deleting account and session
 def delete(request):

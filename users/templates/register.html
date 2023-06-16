@@ -1,59 +1,48 @@
-<!-- User registration page -->
-<p>
-    {% if session.username %}
-        Logged in as <b style="color: red;">{{ session.username }}</b>
-    {% endif %}
-</p>
+{% extends 'base.html' %}
 
-<!-- nav buttons -->
-<a href="{% url 'userindex' %}">Home</a>
-<a href="{% url 'register' %}">Register</a>
-<a href="{% url 'login' %}">Login</a>
-<a href="{% url 'logout' %}">Logout</a>
-<a href="{% url 'delete' %}">Delete account</a>
+{% block title %}User - LiftLinker{% endblock %}
 
-<h1>Register</h1>
-<p>
-    {{ message }}
-</p>
-
-{% if isLogged %}
-    <p>
-        Redirecting to home page in <b><span id="countdown">4</span></b> seconds.
-    </p>
-    <!-- decrement countdown each seconds -->
-    <script>
-        var seconds = 4;
-        setInterval(function () {
-            seconds--;
-            document.getElementById("countdown").textContent = seconds;
-        }, 1000);
-    </script>
-
-    <!-- Redirection to app/ after 4sec -->
-    <script>
-        setTimeout(function () {
-            window.location.href = "/app/";
-        }, 4000);
-    </script>
+{% block nav %}
+    <a class="nav-link hoverlink" href="{% url 'index' %}"
+        style="color: #a1dce9;  margin-left: 1.5em; margin-right: 1.5em;">Home</a>
+    <a class="nav-link hoverlink" href="{% url 'forumindex' %}"
+        style="color: #a1dce9; margin-left: 1.5em; margin-right: 1.5em;">Forum</a>
+    <a class="nav-link hoverlink" href="{% url 'about' %}"
+        style="color: #a1dce9; margin-left: 1.5em; margin-right: 1.5em;">About</a>
+        
+    <div style="background-color: white; width: 4px; height: 2em; margin-left: 1.5em; margin-right: 1.5em;"></div>
     
-{% else %}
+    {% if session.username %}
+        <a class="nav-link hoverlink" href="{% url 'userindex' %}"
+            style="color: #FDA8FF;  margin-left: 1.5em; margin-right: 1.5em;">{{ session.username }}</a>
+    {% else %}
+        <a class="nav-link hoverlink" href="{% url 'userindex' %}"
+            style="color: #FDA8FF;  margin-left: 1.5em; margin-right: 1.5em;">Login</a>
+    {% endif %}
+{% endblock %}
 
-<form method="post">
-    {% csrf_token %}
-    <!-- username -->
-    <label for="username">Username:</label>
-    <input type="text" name="username" id="username">
-    <br>
-    <!-- password -->
-    <label for="password">Password:</label>
-    <input type="password" name="password" id="password">
-    <br>
-    <!-- confirm password -->
-    <label for="confirm_password">Confirm Password:</label>
-    <input type="password" name="confirm_password" id="confirm_password">
-    <br>
-    <button type="submit">Register</button>
-</form>
+{% block navbar2 %}
+    <a class="nav-link hoverlink" href="{% url 'login' %}" style="color: #ffffff; margin-right: .5em;">Login</a>
+    <a class="nav-link hoverlink" href="{% url 'register' %}" style="color: #A1DCE9; text-decoration: underline; margin-right: .5em;">Register</a>
+{% endblock %}
 
-{% endif %}
+{% block body %}
+    <form method="post">
+        {% csrf_token %}
+        <!-- username -->
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username">
+        <br>
+        <!-- password -->
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password">
+        <br>
+        <!-- confirm password -->
+        <label for="confirm_password">Confirm Password:</label>
+        <input type="password" name="confirm_password" id="confirm_password">
+        <br>
+        <button type="submit">Register</button>
+    </form>
+
+    {{ message }}
+{% endblock %}

@@ -1,0 +1,12 @@
+<p>
+    {% if session.username %}
+        Logged in as <b style="color: red;">{{ session.username }}</b>
+    {% endif %}
+</p>
+
+<!-- nav buttons -->
+<a href="{% url 'userindex' %}">Home</a>
+
+<h1>
+    USER SETTINGS
+</h1>
