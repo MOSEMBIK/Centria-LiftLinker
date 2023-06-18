@@ -27,6 +27,10 @@
                 color: #514669 !important;
                 background-color: #FDA8FF !important;
             }
+            #global_search_input:focus {
+                outline: none;
+                border: none;
+            }
 
     </style>
 
@@ -64,7 +68,7 @@
     <span id="loader" style="
             width: 100%;
             height: 100%;
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             background-color: #3e364f;
@@ -127,7 +131,15 @@
             {% endblock %}
         </div>
     </div>
-    <div style="width: 300px;"></div>
+    <div style="width: 300px;">
+        <div style="margin: 1.5em 0px 0px 1em; background-color:#3e364f; border-radius: 10px; margin-right: 1em;">
+            <form class="d-flex justify-content-evenly" action="{% url 'search' %}" method="post">
+                {% csrf_token %}
+                <input id="global_search_input" style="background: none; border: none;" type="text" name="search_input" id="search_input" placeholder="Search..." required>
+                <input style="background: none; border: none;" type="submit" value="| 🔍">
+            </form>
+        </div>
+    </div>
 </div>
 
 {# ------------------------ FOOTER ------------------------ #}

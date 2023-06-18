@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block title %}Forum - LiftLinker{% endblock %}
+
+{% block cssstyle %}
+
+{% endblock %}
+
+{% block nav %}
+    <a class="nav-link hoverlink" href="{% url 'index' %}"
+        style="color: #a1dce9;  margin-left: 1.5em; margin-right: 1.5em;">Home</a>
+    <a class="nav-link hoverlink" href="{% url 'forumindex' %}"
+        style="color: #FDA8FF; margin-left: 1.5em; margin-right: 1.5em;">Forum</a>
+    <a class="nav-link hoverlink" href="{% url 'about' %}"
+        style="color: #a1dce9; margin-left: 1.5em; margin-right: 1.5em;">About</a>
+        
+    <div style="background-color: white; width: 4px; height: 2em; margin-left: 1.5em; margin-right: 1.5em;"></div>
+    
+    {% if session.username %}
+        <a class="nav-link hoverlink" href="{% url 'userindex' %}"
+            style="color: #ffffff;  margin-left: 1.5em; margin-right: 1.5em;">{{ session.username }}</a>
+    {% else %}
+        <a class="nav-link hoverlink" href="{% url 'userindex' %}"
+            style="color: #ffffff;  margin-left: 1.5em; margin-right: 1.5em;">Login</a>
+    {% endif %}
+{% endblock %}
+
+{% block navbar2 %}
+    {% if session.username %}
+        <div class="hoverbutton" style="background-color:#a1dce9; border-radius: 10px; margin-right: 1em;">
+            <a class="nav-link" href="{% url 'newpost' %}" style="color: #514669;">New Subject</a>
+        </div>
+    {% else %}
+        <div class="hoverbutton" style="background-color:#a1dce9; border-radius: 10px; margin-right: 1em;">
+            <a class="nav-link" href="{% url 'login' %}" style="color: #514669;">New Subject</a>
+        </div>
+    {% endif %}
+    <a class="nav-link hoverlink" href="" style="color: #A1DCE9; text-decoration: underline; margin-right: .5em;">Trend</a>
+    <a class="nav-link hoverlink" href="" style="color: #ffffff; margin-right: .5em;">Nutrition</a>
+    <a class="nav-link hoverlink" href="" style="color: #ffffff; margin-right: .5em;">Wheight</a>
+    <a class="nav-link hoverlink" href="" style="color: #ffffff; margin-right: .5em;">Calisthenics</a>
+    <a class="nav-link hoverlink" href="" style="color: #ffffff; margin-right: .5em;">Cross-Fit</a>
+    <a class="nav-link hoverlink" href="" style="color: #ffffff; margin-right: .5em;">Other</a>
+{% endblock %}
+
+{% block body %}
+    <script>
+        function closecomment() {
+            document.getElementById('comment_form').style.display = "none";
+        }
+    </script>
+    <div id="comment_form" style="display: none; width: 680px; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #f0f0f0;">
+        <h2>Awnser to the post</h2>
+        <a href="#" onclick="closecomment()">X</a>
+        <form action="#" method="POST">
+            {% csrf_token %}
+            <input type="hidden" id="parentID" name="parentID" value="{{ post.postID }}">
+            <textarea id="content" name="content" required></textarea><br>
+            <input style="color: #514669;" type="submit" value="Send">
+        </form>
+    </div>
+
+    {% if post %}
+        <div>
+            <p> {{ post.title }} </p>
+            <a href="{% url 'user' username=post.author %}"> {{ post.author }} </a>
+            <p> {{ post.content }} </p>                
+            {% if session.username %}
+                <script>
+                    function opencomment() {
+                        document.getElementById('comment_form').style.display = "block";
+                    }
+                </script>
+                <div class="hoverbutton" style="background-color:#a1dce9; border-radius: 10px; margin-right: 1em;">
+                    <a style="color: #514669; width: 100%;" href="#" onclick="opencomment()">Comment</a>
+                </div>
+            {% else %}
+                <div class="hoverbutton" style="background-color:#a1dce9; border-radius: 10px; margin-right: 1em;">
+                    <a style="color: #514669; width: 100%;" href="{% url 'login' %}">Comment</a>
+                </div>
+            {% endif %}
+            <br>
+        </div>
+        {% for c in comments %}
+        <div>
+            <a href="{% url 'user' username=c.author %}"> {{ c.author }} </a>
+            <p> {{ c.content }} </p>
+            <br>
+        </div>
+        {% endfor %}
+    {% else %}
+        404 Post not found
+    {% endif %}
+{% endblock %}

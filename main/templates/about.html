@@ -22,16 +22,50 @@
 {% endblock %}
 
 {% block navbar2 %}
-    <a class="nav-link hoverlink" href="{% url 'about' %}" style="color: #A1DCE9; text-decoration: underline; margin-right: .5em;">Who are we ?</a>
-    <a class="nav-link hoverlink" href="{% url 'aboutcontact' %}" style="color: #ffffff; margin-right: .5em;">Contact us</a>
+    <a class="nav-link hoverlink" id="body-about-button" href="#" onclick="switch_body('about')" style="color: #A1DCE9; text-decoration: underline; margin-right: .5em;">Who are we ?</a>
+    <a class="nav-link hoverlink" id="body-contact-button" href="#" onclick="switch_body('contact')" style="color: #ffffff; margin-right: .5em;">Contact us</a>
 {% endblock %}
 
 {% block body %}
+    <script>
+        function switch_body(div_to_use) {
+            if (div_to_use == 'about') {
+                document.getElementById('body-about').style.display = 'block';
+                document.getElementById('body-contact').style.display = 'none';
+                
+                document.getElementById('body-about-button').style.color = '#A1DCE9';
+                document.getElementById('body-contact-button').style.color = '#ffffff';
+                
+                document.getElementById('body-about-button').style.textDecoration = 'underline';
+                document.getElementById('body-contact-button').style.textDecoration = 'none';
 
-    <h1>About us.</h1>
+            } else if (div_to_use == 'contact') {
+                document.getElementById('body-about').style.display = 'none';
+                document.getElementById('body-contact').style.display = 'block';
+                
+                document.getElementById('body-about-button').style.color = '#ffffff';
+                document.getElementById('body-contact-button').style.color = '#A1DCE9';
+                
+                document.getElementById('body-about-button').style.textDecoration = 'none';
+                document.getElementById('body-contact-button').style.textDecoration = 'underline';
 
-    <p>
-        Hello world !
-    </p>
+            }
+        }
+    </script>
 
+    <div class="h-100 w-100" id="body-about" style="display: block;">
+        <h1>About us.</h1>
+
+        <p>
+            Hello world !
+        </p>
+    </div>
+
+    <div class="h-100 w-100" id="body-contact" style="display: none;">
+        <h1>Contact us.</h1>
+
+        <p>
+            Hello world !
+        </p>
+    </div>
 {% endblock %}

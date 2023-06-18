@@ -7,18 +7,18 @@ class Post(models.Model):
     status = models.IntegerField(default=0) # 0 = open, 1 = closed
 
     author = models.CharField(max_length=25)
-    title = models.TextField(max_length=60)
+    title = models.CharField(max_length=60)
     content = models.TextField(max_length=3000)
     date = models.DateTimeField(auto_now_add=True)
 
-    category = models.TextField(max_length=60, default="")
-    subcategory = models.TextField(max_length=60, default="")
+    category = models.CharField(max_length=60, default="")
+    subcategory = models.CharField(max_length=60, default="")
 
     upvotes = models.IntegerField(default=0)
     downvotes = models.IntegerField(default=0)
     
-    def __str__(self):
-        return self.postID
+    def __str__(self): 
+        return str(self.postID) + " - '" + self.title + "' by " + self.author
 
 
 class Comment(models.Model):
@@ -33,4 +33,4 @@ class Comment(models.Model):
     downvotes = models.IntegerField(default=0)
     
     def __str__(self):
-        return self.commmentID
+        return  "Comment " + str(self.commmentID) + " to " + str(self.parentID)  + " by " + self.author

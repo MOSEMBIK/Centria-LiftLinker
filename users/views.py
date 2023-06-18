@@ -49,7 +49,7 @@ def search_user(request):
 def register(request):
     if request.session.get('username') :
         return render(request, 'register.html', {'message': 'You aleready have an account.', 'isLogged': True})
-    if request.method == 'POST':
+    if request.method == 'POST' :
         username = request.POST['username']
         try:
             user = User.objects.get(username=username)

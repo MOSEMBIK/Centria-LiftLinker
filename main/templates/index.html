@@ -23,9 +23,9 @@
 
 
 {% block navbar2 %}
-    <a class="nav-link hoverlink" onclick="switch_body('updates')" style="color: #A1DCE9; text-decoration: underline; margin-right: .5em;">Updates</a>
-    <a class="nav-link hoverlink" onclick="switch_body('news')" style="color: #ffffff; margin-right: .5em;">News</a>
-    <a class="nav-link hoverlink" onclick="switch_body('places')" style="color: #ffffff; margin-right: .5em;">Places</a>
+    <a class="nav-link hoverlink" id="body-updates-button" href="#" onclick="switch_body('updates')" style="color: #A1DCE9; text-decoration: underline; margin-right: .5em;">Updates</a>
+    <a class="nav-link hoverlink" id="body-news-button" href="#" onclick="switch_body('news')" style="color: #ffffff; margin-right: .5em;">News</a>
+    <a class="nav-link hoverlink" id="body-places-button" href="#" onclick="switch_body('places')" style="color: #ffffff; margin-right: .5em;">Places</a>
 {% endblock %}
 
 
@@ -33,37 +33,61 @@
     <script>
         function switch_body(div_to_use) {
             if (div_to_use == 'updates') {
-                document.getElementById('body-updates').style.visibility.visible;
-                document.getElementById('body-news').style.visibility.hidden;
-                document.getElementById('body-places').style.visibility.hidden;
+                document.getElementById('body-updates').style.display = 'block';
+                document.getElementById('body-news').style.display = 'none';
+                document.getElementById('body-places').style.display = 'none';
+                
+                document.getElementById('body-updates-button').style.color = '#A1DCE9';
+                document.getElementById('body-news-button').style.color = '#ffffff';
+                document.getElementById('body-places-button').style.color = '#ffffff';
+                
+                document.getElementById('body-updates-button').style.textDecoration = 'underline';
+                document.getElementById('body-news-button').style.textDecoration = 'none';
+                document.getElementById('body-places-button').style.textDecoration = 'none';
 
             } else if (div_to_use == 'news') {
-                document.getElementById('body-updates').style.visibility.hidden;
-                document.getElementById('body-news').style.visibility.visible;
-                document.getElementById('body-places').style.visibility.hidden;
+                document.getElementById('body-updates').style.display = 'none';
+                document.getElementById('body-news').style.display = 'block';
+                document.getElementById('body-places').style.display = 'none';
+
+                document.getElementById('body-updates-button').style.color = '#ffffff';
+                document.getElementById('body-news-button').style.color = '#A1DCE9';
+                document.getElementById('body-places-button').style.color = '#ffffff';
+
+                document.getElementById('body-updates-button').style.textDecoration = 'none';
+                document.getElementById('body-news-button').style.textDecoration = 'underline';
+                document.getElementById('body-places-button').style.textDecoration = 'none';
 
             } else if (div_to_use == 'places') {
-                document.getElementById('body-updates').style.visibility.hidden;
-                document.getElementById('body-news').style.visibility.hidden;
-                document.getElementById('body-places').style.visibility.visible;
+                document.getElementById('body-updates').style.display = 'none';
+                document.getElementById('body-news').style.display = 'none';
+                document.getElementById('body-places').style.display = 'block';
+                
+                document.getElementById('body-updates-button').style.color = '#ffffff';
+                document.getElementById('body-news-button').style.color = '#ffffff';
+                document.getElementById('body-places-button').style.color = '#A1DCE9';
+                
+                document.getElementById('body-updates-button').style.textDecoration = 'none';
+                document.getElementById('body-news-button').style.textDecoration = 'none';
+                document.getElementById('body-places-button').style.textDecoration = 'underline';
                 
             }
         }
     </script>
 
-    <div class="h-100 w-100" id="body-updates" style="visibility: visible;">
+    <div class="h-100 w-100" id="body-updates" style="display: block;">
         <h1>
             Update
         </h1>
     </div>
 
-    <div class="h-100 w-100" id="body-news" style="visibility: hidden;">
+    <div class="h-100 w-100" id="body-news" style="display: none;">
         <h1>
             News
         </h1>
     </div>
 
-    <div class="h-100 w-100" id="body-places" style="visibility: hidden;">
+    <div class="h-100 w-100" id="body-places" style="display: none;">
         <h1>
             Places
         </h1>

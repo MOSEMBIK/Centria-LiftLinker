@@ -31,11 +31,11 @@
         {% csrf_token %}
         <!-- username -->
         <label for="username">Username:</label>
-        <input type="text" name="username" id="username">
+        <input type="text" name="username" id="username" required>
         <br>
         <!-- password -->
         <label for="password">Password:</label>
-        <input type="password" name="password" id="password">
+        <input type="password" name="password" id="password" required>
         <br>
         <button type="submit">Login</button>
     </form>

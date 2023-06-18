@@ -28,7 +28,7 @@
 {% block navbar2 %}
     {% if session.username %}
         <div class="hoverbutton" style="background-color:#a1dce9; border-radius: 10px; margin-right: 1em;">
-            <a class="nav-link" href="" style="color: #514669;">New Subject</a>
+            <a class="nav-link" href="{% url 'newpost' %}" style="color: #514669;">New Subject</a>
         </div>
     {% else %}
         <div class="hoverbutton" style="background-color:#a1dce9; border-radius: 10px; margin-right: 1em;">
@@ -40,4 +40,19 @@
     <a class="nav-link hoverlink" href="" style="color: #ffffff; margin-right: .5em;">Wheight</a>
     <a class="nav-link hoverlink" href="" style="color: #ffffff; margin-right: .5em;">Calisthenics</a>
     <a class="nav-link hoverlink" href="" style="color: #ffffff; margin-right: .5em;">Cross-Fit</a>
+    <a class="nav-link hoverlink" href="" style="color: #ffffff; margin-right: .5em;">Other</a>
+{% endblock %}
+
+{% block body %}
+    {% if posts %}
+        There are {{ posts|length }} records:
+        {% for p in posts %}
+            <div>
+
+                <a href="{% url 'post' postID=p.postID %}"> {{ p.postID }} {{ p.title }} </a>
+                <p> {{ p.author }} </p>
+                <br>
+            </div>
+        {% endfor %}
+    {% endif %}
 {% endblock %}

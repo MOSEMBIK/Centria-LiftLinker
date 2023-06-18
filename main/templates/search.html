@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% block title %}LiftLinker{% endblock %}
+
+{% block nav %}
+    <a class="nav-link hoverlink" href="{% url 'index' %}"
+        style="color: #FDA8FF;  margin-left: 1.5em; margin-right: 1.5em;">Home</a>
+    <a class="nav-link hoverlink" href="{% url 'forumindex' %}"
+        style="color: #a1dce9; margin-left: 1.5em; margin-right: 1.5em;">Forum</a>
+    <a class="nav-link hoverlink" href="{% url 'about' %}"
+        style="color: #a1dce9; margin-left: 1.5em; margin-right: 1.5em;">About</a>
+        
+    <div style="background-color: white; width: 4px; height: 2em; margin-left: 1.5em; margin-right: 1.5em;"></div>
+    
+    {% if session.username %}
+        <a class="nav-link hoverlink" href="{% url 'userindex' %}"
+            style="color: #ffffff;  margin-left: 1.5em; margin-right: 1.5em;">{{ session.username }}</a>
+    {% else %}
+        <a class="nav-link hoverlink" href="{% url 'userindex' %}"
+            style="color: #ffffff;  margin-left: 1.5em; margin-right: 1.5em;">Login</a>
+    {% endif %}
+{% endblock %}
+
+
+{% block navbar2 %}
+    <a class="nav-link hoverlink" id="body-all-button" href="#" onclick="switch_body('all')" style="color: #A1DCE9; text-decoration: underline; margin-right: .5em;">All results</a>
+    <a class="nav-link hoverlink" id="body-users-button" href="#" onclick="switch_body('users')" style="color: #ffffff; margin-right: .5em;">Users</a>
+    <a class="nav-link hoverlink" id="body-posts-button" href="#" onclick="switch_body('posts')" style="color: #ffffff; margin-right: .5em;">Posts</a>
+{% endblock %}
+
+
+{% block body %}
+<script>
+    function switch_body(div_to_use) {
+        if (div_to_use == 'all') {
+            document.getElementById('body-all').style.display = 'block';
+            document.getElementById('body-users').style.display = 'none';
+            document.getElementById('body-posts').style.display = 'none';
+            
+            document.getElementById('body-all-button').style.color = '#A1DCE9';
+            document.getElementById('body-users-button').style.color = '#ffffff';
+            document.getElementById('body-posts-button').style.color = '#ffffff';
+            
+            document.getElementById('body-all-button').style.textDecoration = 'underline';
+            document.getElementById('body-users-button').style.textDecoration = 'none';
+            document.getElementById('body-posts-button').style.textDecoration = 'none';
+
+        } else if (div_to_use == 'users') {
+            document.getElementById('body-all').style.display = 'none';
+            document.getElementById('body-users').style.display = 'block';
+            document.getElementById('body-posts').style.display = 'none';
+
+            document.getElementById('body-all-button').style.color = '#ffffff';
+            document.getElementById('body-users-button').style.color = '#A1DCE9';
+            document.getElementById('body-posts-button').style.color = '#ffffff';
+
+            document.getElementById('body-all-button').style.textDecoration = 'none';
+            document.getElementById('body-users-button').style.textDecoration = 'underline';
+            document.getElementById('body-posts-button').style.textDecoration = 'none';
+
+        } else if (div_to_use == 'posts') {
+            document.getElementById('body-all').style.display = 'none';
+            document.getElementById('body-users').style.display = 'none';
+            document.getElementById('body-posts').style.display = 'block';
+            
+            document.getElementById('body-all-button').style.color = '#ffffff';
+            document.getElementById('body-users-button').style.color = '#ffffff';
+            document.getElementById('body-posts-button').style.color = '#A1DCE9';
+            
+            document.getElementById('body-all-button').style.textDecoration = 'none';
+            document.getElementById('body-users-button').style.textDecoration = 'none';
+            document.getElementById('body-posts-button').style.textDecoration = 'underline';
+            
+        }
+    }
+</script>
+
+<div class="h-100 w-100" id="body-all" style="display: block;">
+    <h1>
+        All
+    </h1>
+    {% for u in users %}
+        <div>
+            <img src="">
+            <a href="{% url 'user' username=u.username %}">{{ u.username }}</a><br>
+        </div>
+    {% endfor %}
+    {% for p in posts %}
+        <div>
+            <a href="{% url 'post' postID=p.postID %}">{{ p.title }}</a><br>
+            <p>{{ p.content|slice:":50" }}...</p>
+        </div>
+    {% endfor %}
+</div>
+
+<div class="h-100 w-100" id="body-users" style="display: none;">
+    <h1>
+        Users
+    </h1>
+    {% for u in users %}
+        <div>
+            <img src="">
+            <a href="{% url 'user' username=u.username %}">{{ u.username }}</a><br>
+        </div>
+    {% endfor %}
+</div>
+
+<div class="h-100 w-100" id="body-posts" style="display: none;">
+    <h1>
+        Posts
+    </h1>
+    {% for p in posts %}
+        <div>
+            <a href="{% url 'post' postID=p.postID %}">{{ p.title }}</a><br>
+            <p>{{ p.content|slice:":50" }}...</p>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

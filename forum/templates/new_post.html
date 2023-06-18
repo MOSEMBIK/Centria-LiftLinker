@@ -25,19 +25,115 @@
     {% endif %}
 {% endblock %}
 
-{% block navbar2 %}
-    {% if session.username %}
-        <div class="hoverbutton" style="background-color:#a1dce9; border-radius: 10px; margin-right: 1em;">
-            <a class="nav-link" href="" style="color: #514669;">New Subject</a>
-        </div>
-    {% else %}
-        <div class="hoverbutton" style="background-color:#a1dce9; border-radius: 10px; margin-right: 1em;">
-            <a class="nav-link" href="{% url 'login' %}" style="color: #514669;">New Subject</a>
-        </div>
-    {% endif %}
-    <a class="nav-link hoverlink" href="" style="color: #A1DCE9; text-decoration: underline; margin-right: .5em;">Trend</a>
-    <a class="nav-link hoverlink" href="" style="color: #ffffff; margin-right: .5em;">Nutrition</a>
-    <a class="nav-link hoverlink" href="" style="color: #ffffff; margin-right: .5em;">Wheight</a>
-    <a class="nav-link hoverlink" href="" style="color: #ffffff; margin-right: .5em;">Calisthenics</a>
-    <a class="nav-link hoverlink" href="" style="color: #ffffff; margin-right: .5em;">Cross-Fit</a>
+
+{% block body %}
+    <script>
+        // Fonction appelée lorsque la catégorie est modifiée
+        function switch_subcategory() {
+            var category = document.getElementById("category").value;
+            var subcategory = document.getElementById("subcategory");
+
+            subcategory.innerHTML = "";
+            if (category === "nutrition") {
+                var option1 = document.createElement("option");
+                option1.value = "questions";
+                option1.text = "Questions";
+                subcategory.appendChild(option1);
+
+                var option2 = document.createElement("option");
+                option2.value = "recepies";
+                option2.text = "Recipies";
+                subcategory.appendChild(option2);
+
+                var option3 = document.createElement("option");
+                option3.value = "suplements";
+                option3.text = "Suplements";
+                subcategory.appendChild(option3);
+            } 
+            else if (category === "wheight") {
+                var option1 = document.createElement("option");
+                option1.value = "questions";
+                option1.text = "Questions";
+                subcategory.appendChild(option1);
+
+                var option2 = document.createElement("option");
+                option2.value = "freewheights";
+                option2.text = "Free wheights";
+                subcategory.appendChild(option2);
+
+                var option3 = document.createElement("option");
+                option3.value = "machines";
+                option3.text = "Machines";
+                subcategory.appendChild(option3);
+            } 
+            else if (category === "calisthenics") {
+                var option1 = document.createElement("option");
+                option1.value = "questions";
+                option1.text = "Questions";
+                subcategory.appendChild(option1);
+
+                var option2 = document.createElement("option");
+                option2.value = "equipments";
+                option2.text = "Equipments";
+                subcategory.appendChild(option2);
+
+                var option3 = document.createElement("option");
+                option3.value = "routines";
+                option3.text = "Routines";
+                subcategory.appendChild(option3);
+            } 
+            else if (category === "crossfit") {
+                var option1 = document.createElement("option");
+                option1.value = "questions";
+                option1.text = "Questions";
+                subcategory.appendChild(option1);
+
+                var option2 = document.createElement("option");
+                option2.value = "circuits";
+                option2.text = "Circuits";
+                subcategory.appendChild(option2);
+            }
+            else if (category === "other") {
+                var option1 = document.createElement("option");
+                option1.value = "questions";
+                option1.text = "Questions";
+                subcategory.appendChild(option1);
+
+                var option1 = document.createElement("option");
+                option1.value = "other";
+                option1.text = "Other";
+                subcategory.appendChild(option1);
+            }
+        }
+    </script>
+
+    <form method="post">
+        {% csrf_token %}
+        <!-- Subject -->
+        <label for="title">Subject :</label>
+        <input type="text" maxlength="60" name="title" id="title" required>
+        <br>
+        <!-- Content -->
+        <label for="content">Content :</label>
+        <textarea maxlength="3000" name="content" id="content" required></textarea>
+        <br>
+        <!-- Category -->
+        <label for="category">Category :</label>
+        <select id="category" name="category" onchange="switch_subcategory()" required>
+            <option disabled selected></option>
+            <option value="nutrition">Nutrition</option>
+            <option value="wheight">Wheight Lifting</option>
+            <option value="calisthenics">Calisthenics</option>
+            <option value="crossfit">Cross-Fit</option>
+            <option value="other">Other</option>
+        </select>
+        <br>
+        <!-- SubCategory -->
+        <label for="subcategory">Sub-category :</label>
+        <select id="subcategory" name="subcategory" required>
+            <!-- Dynamic option with JS -->
+        </select>
+        <br>
+        <button type="submit">Post</button>
+    </form>
 {% endblock %}
