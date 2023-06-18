@@ -26,33 +26,200 @@
 {% endblock %}
 
 {% block navbar2 %}
-    {% if session.username %}
-        <div class="hoverbutton" style="background-color:#a1dce9; border-radius: 10px; margin-right: 1em;">
-            <a class="nav-link" href="{% url 'newpost' %}" style="color: #514669;">New Subject</a>
-        </div>
-    {% else %}
-        <div class="hoverbutton" style="background-color:#a1dce9; border-radius: 10px; margin-right: 1em;">
-            <a class="nav-link" href="{% url 'login' %}" style="color: #514669;">New Subject</a>
-        </div>
-    {% endif %}
-    <a class="nav-link hoverlink" href="" style="color: #A1DCE9; text-decoration: underline; margin-right: .5em;">Trend</a>
-    <a class="nav-link hoverlink" href="" style="color: #ffffff; margin-right: .5em;">Nutrition</a>
-    <a class="nav-link hoverlink" href="" style="color: #ffffff; margin-right: .5em;">Wheight</a>
-    <a class="nav-link hoverlink" href="" style="color: #ffffff; margin-right: .5em;">Calisthenics</a>
-    <a class="nav-link hoverlink" href="" style="color: #ffffff; margin-right: .5em;">Cross-Fit</a>
-    <a class="nav-link hoverlink" href="" style="color: #ffffff; margin-right: .5em;">Other</a>
+<script>
+    var currentDropdown = null;
+    var currentBody = null;
+    var currentItem = null;
+
+    function showDropdown(divId) {
+        var dropdownId = divId.split('-')[0];
+
+        var element = document.getElementById(divId);
+        var isDisplayed = getComputedStyle(element).display === 'block';
+
+        resetDropdowns();
+
+        element.style.display = isDisplayed ? 'none' : 'block';
+
+        if (!isDisplayed) {
+            currentDropdown = dropdownId;
+            var categoryElement = document.getElementById(currentDropdown);
+            categoryElement.style.color = '#A1DCE9';
+            categoryElement.style.textDecoration = 'underline';
+        } else {
+            currentDropdown = null;
+        }
+    }
+
+    function resetDropdowns() {
+        var dropdownIds = ['nutrition', 'weight', 'calisthenics', 'crossfit', 'other'];
+        var categoryIds = ['trend', 'nutrition', 'weight', 'calisthenics', 'crossfit', 'other'];
+
+        dropdownIds.forEach(function (dropdownId) {
+            var dropdownElement = document.getElementById(dropdownId + '-dropdown');
+            var categoryElement = document.getElementById(dropdownId);
+
+            dropdownElement.style.display = 'none';
+            categoryElement.style.color = '#ffffff';
+            categoryElement.style.textDecoration = 'none';
+        });
+
+        categoryIds.forEach(function (categoryId) {
+            var categoryElement = document.getElementById(categoryId);
+
+            if (categoryId !== 'nutrition' && categoryId !== 'weight' && categoryId !== 'calisthenics' && categoryId !== currentDropdown) {
+                categoryElement.style.color = '#ffffff';
+                categoryElement.style.textDecoration = 'none';
+            }
+        });
+
+        if (currentBody) {
+            var currentBodyElement = document.getElementById(currentBody);
+            currentBodyElement.style.display = 'none';
+        }
+
+        if (currentItem) {
+            currentItem.style.color = '#ffffff';
+            currentItem.style.fontSize = '16px';
+        }
+    }
+
+    function switchBody(bodyId, itemElement) {
+        var bodyIds = ['body-trend', 'body-nutrition-questions', 'body-nutrition-recipies', 'body-nutrition-supplements', 'body-weight-questions', 'body-weight-freeweights', 'body-weight-machines', 'body-calisthenics-questions', 'body-calisthenics-equipments', 'body-calisthenics-routines', 'body-crossfit-questions', 'body-crossfit-circuits', 'body-other-questions', 'body-other-other'];
+    
+        bodyIds.forEach(function(bodyId) {
+            var bodyElement = document.getElementById(bodyId);
+            bodyElement.style.display = 'none';
+        });
+    
+        var selectedBodyElement = document.getElementById(bodyId);
+        selectedBodyElement.style.display = 'block';
+    
+        if (currentItem) {
+            currentItem.style.color = '#ffffff';
+            currentItem.style.fontSize = '16px';
+        }
+    
+        if (itemElement.id !== 'trend') {
+            itemElement.style.color = '#FDA8FF';
+            itemElement.style.fontSize = '18px';
+            currentItem = itemElement;
+        } else {
+            currentItem = null;
+            itemElement.style.color = '#A1DCE9';
+            itemElement.style.textDecoration = 'underline';
+            resetDropdowns();
+        }
+    }
+    
+    function resetTrend() {
+        var trendElement = document.getElementById('trend');
+        trendElement.style.color = '#A1DCE9';
+        trendElement.style.textDecoration = 'underline';
+    }
+</script>
+
+{% if session.username %}
+    <div class="hoverbutton" style="background-color:#a1dce9; border-radius: 10px; margin-right: 1em;">
+        <a class="nav-link" href="{% url 'newpost' %}" style="color: #514669;">New Subject</a>
+    </div>
+{% else %}
+    <div class="hoverbutton" style="background-color:#a1dce9; border-radius: 10px; margin-right: 1em;">
+        <a class="nav-link" href="{% url 'login' %}" style="color: #514669;">New Subject</a>
+    </div>
+{% endif %}
+<a class="nav-link hoverlink" id="trend" href="#" onclick="switchBody('body-trend', this); resetTrend();" style="color: #A1DCE9; text-decoration: underline; margin-right: .5em;">Trend</a>
+
+<a class="nav-link hoverlink" id="nutrition" href="#" onclick="showDropdown('nutrition-dropdown')" style="color: #ffffff; margin-right: .5em;">Nutrition</a>
+<div id="nutrition-dropdown" style="display: none;">
+    <a class="nav-link hoverlink" id="nutrition-questions" href="#" onclick="switchBody('body-nutrition-questions', this)" style="color: #A1DCE9; margin-right: .5em; font-size: 16px;">Questions</a>
+    <a class="nav-link hoverlink" id="nutrition-recipies" href="#" onclick="switchBody('body-nutrition-recipies', this)" style="color: #A1DCE9; margin-right: .5em; font-size: 16px;">Recipes</a>
+    <a class="nav-link hoverlink" id="nutrition-supplements" href="#" onclick="switchBody('body-nutrition-supplements', this)" style="color: #A1DCE9; margin-right: .5em; font-size: 16px;">Supplements</a>
+</div>
+
+<a class="nav-link hoverlink" id="weight" href="#" onclick="showDropdown('weight-dropdown')" style="color: #ffffff; margin-right: .5em;">Weight</a>
+<div id="weight-dropdown" style="display: none;">
+    <a class="nav-link hoverlink" id="weight-questions" href="#" onclick="switchBody('body-weight-questions', this)" style="color: #A1DCE9; margin-right: .5em; font-size: 16px;">Questions</a>
+    <a class="nav-link hoverlink" id="weight-freeweights" href="#" onclick="switchBody('body-weight-freeweights', this)" style="color: #A1DCE9; margin-right: .5em; font-size: 16px;">Free Weights</a>
+    <a class="nav-link hoverlink" id="weight-machines" href="#" onclick="switchBody('body-weight-machines', this)" style="color: #A1DCE9; margin-right: .5em; font-size: 16px;">Machines</a>
+</div>
+
+<a class="nav-link hoverlink" id="calisthenics" href="#" onclick="showDropdown('calisthenics-dropdown')" style="color: #ffffff; margin-right: .5em;">Calisthenics</a>
+<div id="calisthenics-dropdown" style="display: none;">
+    <a class="nav-link hoverlink" id="calisthenics-questions" href="#" onclick="switchBody('body-calisthenics-questions', this)" style="color: #A1DCE9; margin-right: .5em; font-size: 16px;">Questions</a>
+    <a class="nav-link hoverlink" id="calisthenics-equipments" href="#" onclick="switchBody('body-calisthenics-equipments', this)" style="color: #A1DCE9; margin-right: .5em; font-size: 16px;">Equipments</a>
+    <a class="nav-link hoverlink" id="calisthenics-routines" href="#" onclick="switchBody('body-calisthenics-routines', this)" style="color: #A1DCE9; margin-right: .5em; font-size: 16px;">Routines</a>
+</div>
+
+<a class="nav-link hoverlink" id="crossfit" href="#" onclick="showDropdown('crossfit-dropdown')" style="color: #ffffff; margin-right: .5em;">Cross-Fit</a>
+<div id="crossfit-dropdown" style="display: none;">
+    <a class="nav-link hoverlink" id="crossfit-questions" href="#" onclick="switchBody('body-crossfit-questions', this)" style="color: #A1DCE9; margin-right: .5em; font-size: 16px;">Questions</a>
+    <a class="nav-link hoverlink" id="crossfit-circuits" href="#" onclick="switchBody('body-crossfit-circuits', this)" style="color: #A1DCE9; margin-right: .5em; font-size: 16px;">Circuits</a>
+</div>
+
+<a class="nav-link hoverlink" id="other" href="#" onclick="showDropdown('other-dropdown')" style="color: #ffffff; margin-right: .5em;">Other</a>
+<div id="other-dropdown" style="display: none;">
+    <a class="nav-link hoverlink" id="other-questions" href="#" onclick="switchBody('body-other-questions', this)" style="color: #A1DCE9; margin-right: .5em; font-size: 16px;">Questions</a>
+    <a class="nav-link hoverlink" id="other-other" href="#" onclick="switchBody('body-other-other', this)" style="color: #A1DCE9; margin-right: .5em; font-size: 16px;">Other</a>
+</div>
 {% endblock %}
 
 {% block body %}
+<div id="body-trend">
     {% if posts %}
-        There are {{ posts|length }} records:
-        {% for p in posts %}
-            <div>
-
-                <a href="{% url 'post' postID=p.postID %}"> {{ p.postID }} {{ p.title }} </a>
-                <p> {{ p.author }} </p>
-                <br>
-            </div>
-        {% endfor %}
+    There are {{ posts|length }} records:
+    {% for p in posts %}
+    <div>
+        <a href="{% url 'post' postID=p.postID %}"> {{ p.postID }} {{ p.title }} </a>
+        <p> {{ p.author }} </p>
+        <br>
+    </div>
+    {% endfor %}
     {% endif %}
+</div>
+<div id="body-nutrition-questions" style="display: none;">
+    <h1>Nutrition Questions</h1>
+</div>
+<div id="body-nutrition-recipies" style="display: none;">
+    <h1>Nutrition Recipies</h1>
+</div>
+<div id="body-nutrition-supplements" style="display: none;">
+    <h1>Nutrition Supplements</h1>
+</div>
+
+<div id="body-weight-questions" style="display: none;">
+    <h1>Weight Questions</h1>
+</div>
+<div id="body-weight-freeweights" style="display: none;">
+    <h1>Weight Free Weights</h1>
+</div>
+<div id="body-weight-machines" style="display: none;">
+    <h1>Weight Machines</h1>
+</div>
+
+<div id="body-calisthenics-questions" style="display: none;">
+    <h1>Calisthenics Questions</h1>
+</div>
+<div id="body-calisthenics-equipments" style="display: none;">
+    <h1>Calisthenics Equipments</h1>
+</div>
+<div id="body-calisthenics-routines" style="display: none;">
+    <h1>Calisthenics Routines</h1>
+</div>
+
+<div id="body-crossfit-questions" style="display: none;">
+    <h1>Crossfit Questions</h1>
+</div>
+
+<div id="body-crossfit-circuits" style="display: none;">
+    <h1>Crossfit Circuits</h1>
+</div>
+
+<div id="body-other-questions" style="display: none;">
+    <h1>Other Questions</h1>
+</div>
+
+<div id="body-other-other" style="display: none;">
+    <h1>Other Other</h1>
+</div>
 {% endblock %}
