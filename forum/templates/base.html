@@ -27,9 +27,21 @@
                 color: #514669 !important;
                 background-color: #FDA8FF !important;
             }
-            #global_search_input:focus {
+
+            .global_search_input:focus {
                 outline: none;
                 border: none;
+            }
+            h1 {
+                color: #A1DCE9 !important;
+            }
+            h2 {
+                color: #ffffff !important;
+                font-size: 1.8rem !important;
+            }
+            p {
+                color: #ffffff;
+                font-size: 1.2rem;
             }
 
     </style>
@@ -83,7 +95,7 @@
 
 {# ------------------------- NAV ------------------------- #}
 <nav class="navbar navbar-expand-lg navbar-light d-flex w-100"
-     style="height: 5em; position: fixed; background-color: #514669; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);">
+     style="z-index: 1000; height: 5em; position: fixed; background-color: #514669; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);">
     <div class="container-fluid d-flex justify-content-between h-100" >
         <a class="d-flex navbar-brand justify-content-center"  style="max-width: 16em; margin-left: 5em;" href="/">
             <img style="max-width: 16em; margin: 1% 1% 1% 1%;" src="{% static 'img/logo.png' %}">
@@ -114,17 +126,17 @@
 </nav>
 
 {# ------------------------- BODY ------------------------- #}
-<div class="d-flex flex-row flex-grow-1 justify-content-center" style="margin-top: 5em; margin-bottom: 3em; background-color: #514669;">
+<div class="d-flex flex-row flex-grow-1 justify-content-center" style="font-family: 'Days One', sans-serif; margin-top: 5em; margin-bottom: 3em; background-color: #514669;">
     <div class="d-flex flex-row justify-content-end" style="width: 300px;">
-        <div style="margin-top: .5em; text-align: right; font-size: 1.5em; font-family: 'Days One', sans-serif;">
+        <div style="position:fixed; margin-top: .5em; text-align: right; font-size: 1.5em; font-family: 'Days One', sans-serif;">
             {% block navbar2 %}
                 
             {% endblock %}
         </div>
 
-        <div style="width: 3px; background-color: #A1DCE9; height: 15em; margin-top: 2em; margin-right: .5em;"></div>
+        <div style="position:fixed; width: 3px; background-color: #A1DCE9; height: 15em; margin-top: 2em; margin-right: .5em;"></div>
     </div>
-    <div class="justify-center" style="background-color: blue; width: 780px;">
+    <div style="padding: 0px 10px 0px 10px; background: none; width: 780px;">
         <div style="margin-top: 1em;">
             {% block body %}
 
@@ -132,10 +144,10 @@
         </div>
     </div>
     <div style="width: 300px;">
-        <div style="margin: 1.5em 0px 0px 1em; background-color:#3e364f; border-radius: 10px; margin-right: 1em;">
+        <div style="position:fixed; margin: 1.5em 0px 0px 1em; background-color:#3e364f; border-radius: 10px; margin-right: 1em;">
             <form class="d-flex justify-content-evenly" action="{% url 'search' %}" method="post">
                 {% csrf_token %}
-                <input id="global_search_input" style="background: none; border: none;" type="text" name="search_input" id="search_input" placeholder="Search..." required>
+                <input class="global_search_input" style="font-family: 'Days One', sans-serif; padding-left: 10px; margin: 5px 0px 5px 0px; background: none; border: none;" type="text" name="search_input" id="search_input" placeholder="Search..." required>
                 <input style="background: none; border: none;" type="submit" value="| 🔍">
             </form>
         </div>
@@ -144,7 +156,7 @@
 
 {# ------------------------ FOOTER ------------------------ #}
 <footer class="d-flex flex-row justify-content-center justify-content-evenly p-2 w-100"
-        style=" position: fixed; background-color: #3e364f; height: 3em; left: 0; bottom: 0;">
+        style="position: fixed; background-color: #3e364f; height: 3em; left: 0; bottom: 0;">
     {% block footer %}
 
     {% endblock %}

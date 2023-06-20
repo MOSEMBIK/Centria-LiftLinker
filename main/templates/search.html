@@ -2,6 +2,18 @@
 
 {% block title %}LiftLinker{% endblock %}
 
+{% block cssstyle %}
+    <style>
+        .post_card a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+        .post_card:hover a {
+            color: #FDA8FF;
+        }
+    </style>
+{% endblock %}
+
 {% block nav %}
     <a class="nav-link hoverlink" href="{% url 'index' %}"
         style="color: #FDA8FF;  margin-left: 1.5em; margin-right: 1.5em;">Home</a>
@@ -82,13 +94,13 @@
     {% for u in users %}
         <div>
             <img src="">
-            <a href="{% url 'user' username=u.username %}">{{ u.username }}</a><br>
+            <a href="{% url 'user' username=u.username %}">{{ u.username }}</a><br><br>
         </div>
     {% endfor %}
     {% for p in posts %}
-        <div>
-            <a href="{% url 'post' postID=p.postID %}">{{ p.title }}</a><br>
-            <p>{{ p.content|slice:":50" }}...</p>
+        <div onclick="window.location.href='{% url 'post' postID=p.postID %}'" class="post_card" style="margin: 10px; padding: 5px; background-color: #574A6D;">
+            <a style="font-size: 1.3em;" href="#"> {{ p.title }} </a> <i style="color: #8B8B8B;">- {{ p.author }}</i><br>
+            <p style="color: #88A2FE;">{{ p.content|slice:":50" }}...</p>
         </div>
     {% endfor %}
 </div>
@@ -100,7 +112,7 @@
     {% for u in users %}
         <div>
             <img src="">
-            <a href="{% url 'user' username=u.username %}">{{ u.username }}</a><br>
+            <a href="{% url 'user' username=u.username %}">{{ u.username }}</a><br><br>
         </div>
     {% endfor %}
 </div>
@@ -110,9 +122,9 @@
         Posts
     </h1>
     {% for p in posts %}
-        <div>
-            <a href="{% url 'post' postID=p.postID %}">{{ p.title }}</a><br>
-            <p>{{ p.content|slice:":50" }}...</p>
+        <div onclick="window.location.href='{% url 'post' postID=p.postID %}'" class="post_card" style="margin: 10px; padding: 5px; background-color: #574A6D;">
+            <a style="font-size: 1.3em;" href="#"> {{ p.title }} </a> <i style="color: #8B8B8B;">- {{ p.author }}</i><br>
+            <p style="color: #88A2FE;">{{ p.content|slice:":50" }}...</p>
         </div>
     {% endfor %}
 </div>

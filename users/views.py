@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 
 # Import users models
+from forum.models import Post, Comment
 from .models import User
 
 # Import usefull libraries
@@ -11,39 +12,46 @@ import hashlib
 def userindex(request):
     if request.session.get('username') :
         user = User.objects.get(username=request.session.get('username'))
-        return render(request, 'userindex.html', {'user': user, 'session': request.session, 'user_profil': True})
+        username = request.session.get('username')
+        filtered =  {
+            'favorites': [], 
+            'opened': [], 
+            'archives': [],
+        }
+        #filtered['favorites'] = Post.objects.filter(status=0, author=username).order_by('-date')
+        filtered['opened'] = Post.objects.filter(status=0, author=username).order_by('-date')
+        filtered['archives'] = Post.objects.filter(status=1, author=username).order_by('-date')
+        
+        return render(request, 'userindex.html', {'user': user, 'filtered': filtered, 'session': request.session, 'user_profil': True})
     else :
         return redirect('login')
 
 # User view
 def user(request, username):
-    user = User.objects.get(username=username)
+    try :
+        user = User.objects.get(username=username)
+    except :
+        user = {'username': 'User not found.', 'profil_bio': 'User not found.', 'score': 0, 'profile_pic': None}
+        filtered =  {
+            'favorites': [], 
+            'opened': [], 
+            'archives': [],
+        }
+        return render(request, 'userindex.html', {'user': user, 'filtered': filtered, 'session': request.session, 'user_profil': False})
+
+    filtered =  {
+        'favorites': [], 
+        'opened': [], 
+        'archives': [],
+    }
+    #filtered['favorites'] = Post.objects.filter(status=0, category=cat, subcategory=sub).order_by('-date')
+    filtered['opened'] = Post.objects.filter(status=0, author=username).order_by('-date')
+    filtered['archives'] = Post.objects.filter(status=1, author=username).order_by('-date')
+    
     if username == request.session.get('username') :
         return redirect('userindex')
     else :
-        return render(request, 'userindex.html', {'user': user, 'session': request.session, 'user_profil': False})
-        
-# User Settings view
-def usersettings(request):
-    if request.session.get('username') :
-        user = User.objects.get(username=request.session.get('username'))
-        return render(request, 'usersettings.html', {'user': user, 'session': request.session})
-
-    return redirect('userindex')
-
-# Serching user
-def search_user(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        try:
-            user = User.objects.get(username=username)
-            if request.session.get('username') and request.session.get('username') == username :
-                return render(request, 'userindex.html', {'user': user, 'session': request.session, 'user_profil': True})
-            return render(request, 'userindex.html', {'user': user, 'session': request.session, 'user_profil': False})
-        except:
-            return render(request, 'user_search.html', {'message': 'User not found', 'session': request.session})
-    else:
-        return render(request, 'user_search.html', {'message': 'Welcome on user search page', 'session': request.session})
+        return render(request, 'userindex.html', {'user': user, 'filtered': filtered, 'session': request.session, 'user_profil': False})
 
 # User registration with sha256 password encryption
 def register(request):

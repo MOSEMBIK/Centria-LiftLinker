@@ -1,6 +1,18 @@
 {% extends 'base.html' %}
 
-{% block title %}User - LiftLinker{% endblock %}
+{% block title %}{{ user.username }} - LiftLinker{% endblock %}
+
+{% block cssstyle %}
+    <style>
+        .post_card a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+        .post_card:hover a {
+            color: #FDA8FF;
+        }
+    </style>
+{% endblock %}
 
 {% block nav %}
     <a class="nav-link hoverlink" href="{% url 'index' %}"
@@ -26,113 +38,102 @@
         <!-- Fonction JS qui applique le style a un element de la nav bar en fonction de la hauteur du scroll -->
     </script>
 
-    <a class="nav-link hoverlink" href="" style="color: #A1DCE9; text-decoration: underline; margin-right: .5em;">Profil</a>
+    <a id="body-main-button" class="nav-link hoverlink" onclick="switch_body('main')" href="#" style="color: #A1DCE9; text-decoration: underline; margin-right: .5em;">Profil</a>
         
     {% if user_profil %}
-        <a class="nav-link hoverlink" href="" style="color: #ffffff; margin-right: .5em;">Favorites</a>
+        <a class="nav-link hoverlink" onclick="switch_body('main')" href="#" style="color: #ffffff; margin-right: .5em;">Favorites</a>
     {% endif %}
 
-    <a class="nav-link hoverlink" href="" style="color: #ffffff; margin-right: .5em;">Open Subjects</a>
-    <a class="nav-link hoverlink" href="" style="color: #ffffff; margin-right: .5em;">Archives</a>
+    <a class="nav-link hoverlink" onclick="switch_body('main')" href="#" style="color: #ffffff; margin-right: .5em;">Open Subjects</a>
+    <a class="nav-link hoverlink" onclick="switch_body('main')" href="#" style="color: #ffffff; margin-right: .5em;">Archives</a>
     
     {% if user_profil %}
-        <a class="nav-link hoverlink" href="{% url 'usersettings' %}" style="color: #ffffff; margin-right: .5em;">Settings</a>
+        <a id="body-settings-button" class="nav-link hoverlink" onclick="switch_body('settings')" href="#" style="color: #ffffff; margin-right: .5em;">Settings</a>
     {% endif %}
 {% endblock %}
 
 {% block body %}
-<!-- nav buttons -->
-<a href="{% url 'index' %}">Home</a>
-<a href="{% url 'userindex' %}">Home User</a>
-<a href="{% url 'forumindex' %}">Forum</a>
-<a href="{% url 'search_user' %}">Search</a>
-<a href="{% url 'logout' %}">Logout</a>
-<a href="{% url 'delete' %}">Delete account</a>
+    <script>
+        function switch_body(div_to_use, currElmt) {
+            if (div_to_use == 'main') {
+                document.getElementById('body-main').style.display = 'block';
+                document.getElementById('body-settings').style.display = 'none';
+                
+                document.getElementById('body-main-button').style.color = '#A1DCE9';
+                document.getElementById('body-settings-button').style.color = '#ffffff';
+                
+                document.getElementById('body-main-button').style.textDecoration = 'underline';
+                document.getElementById('body-settings-button').style.textDecoration = 'none';
 
-<h1>{{ user.username }}</h1>
+            } else if (div_to_use == 'settings') {
+                document.getElementById('body-main').style.display = 'none';
+                document.getElementById('body-settings').style.display = 'block';
 
-<p>
-    Hello world !
-</p>
-<h1>Home page</h1>
+                document.getElementById('body-main-button').style.color = '#ffffff';
+                document.getElementById('body-settings-button').style.color = '#A1DCE9';
 
-<p>
-    Hello world !
-</p>
-<h1>Home page</h1>
+                document.getElementById('body-main-button').style.textDecoration = 'none';
+                document.getElementById('body-settings-button').style.textDecoration = 'underline';
+            }
+        }
+    </script>
 
-<p>
-    Hello world !
-</p>
-<h1>Home page</h1>
+    <!-- MAIN DIV -->
+    <div style="position: relative;" id="body-main">
+        {% if user_profil %}
+            <a style="position: absolute; top: 0px; right: 0px;" href="{% url 'logout' %}">Logout</a>
+        {% endif %}
 
-<p>
-    Hello world !
-</p>
+        <div class="d-flex" style="margin-bottom: 2em;">
+            {% load static %}
+            <div>
+                <img src="{% static 'img/Mohammad_photo.jpg' %}" style="filter: blur(5px); border-radius: 50%; width: 6em;"/>
+                <h1>{{ user.username }}</h1>
+            </div>
+            <div style="width: 100%; margin-top: 1.5em; margin-left: 2em; padding: 10px; border-radius: 10px; background-color: #574A6D;">
+                <p>Bio :</p>
+                <p style="color: #ADADAD;">
+                    {{ user.profil_bio }}
+                </p>
+            </div>
+        </div>
+        
+        {% if user_profil %}
+            <h4>Favorites</h4>
+            {% for p in filtered.favorites %}
+                <div onclick="window.location.href='{% url 'post' postID=p.postID %}'" class="post_card" style="margin: 10px; padding: 5px; background-color: #574A6D;">
+                    <a style="font-size: 1.3em;" href="#"> {{ p.title }} </a> <i style="color: #8B8B8B;">- {{ p.author }}</i><br>
+                    <p style="color: #88A2FE;">{{ p.content|slice:":50" }}...</p>
+                </div>
+            {% endfor %}   
+        {% endif %}
+    
+        <h4>Open Subjects</h4>
+        {% for p in filtered.opened %}
+            <div onclick="window.location.href='{% url 'post' postID=p.postID %}'" class="post_card" style="margin: 10px; padding: 5px; background-color: #574A6D;">
+                <a style="font-size: 1.3em;" href="#"> {{ p.title }} </a> <i style="color: #8B8B8B;">- {{ p.author }}</i><br>
+                <p style="color: #88A2FE;">{{ p.content|slice:":50" }}...</p>
+            </div>
+        {% endfor %}        
+    
+        <h4>Archives</h4>
+        {% for p in filtered.archives %}
+            <div onclick="window.location.href='{% url 'post' postID=p.postID %}'" class="post_card" style="margin: 10px; padding: 5px; background-color: #574A6D;">
+                <a style="font-size: 1.3em;" href="#"> {{ p.title }} </a> <i style="color: #8B8B8B;">- {{ p.author }}</i><br>
+                <p style="color: #88A2FE;">{{ p.content|slice:":50" }}...</p>
+            </div>
+        {% endfor %}   
+    </div>
 
-<h1>Home page</h1>
+    {% if user_profil %}
+        <!-- SETTINGS DIV -->
+        <div id="body-settings" style="display: none;">    
+            <h1>
+                USER SETTINGS
+            </h1>
 
-<p>
-    Hello world !
-</p>
+            <button class="hoverbutton" style="background-color:#A41A1A; padding: 5px 10px 5px 10px; border: none; border-radius: 10px; margin-right: 1em; color: #A1DCE9; width: 25%;" onclick="window.location.href='{% url 'delete' %}'">Delete account</button>
+        </div>
+    {% endif %}
 
-<p>
-    Hello world !
-</p>
-<h1>Home page</h1>
-
-<p>
-    Hello world !
-</p>
-<h1>Home page</h1>
-
-<p>
-    Hello world !
-</p>
-
-<h1>Home page</h1>
-
-<p>
-    Hello world !
-</p>
-
-<p>
-    Hello world !
-</p>
-<h1>Home page</h1>
-
-<p>
-    Hello world !
-</p>
-<h1>Home page</h1>
-
-<p>
-    Hello world !
-</p>
-
-<h1>Home page</h1>
-
-<p>
-    Hello world !
-</p>
-
-<p>
-    Hello world !
-</p>
-<h1>Home page</h1>
-
-<p>
-    Hello world !
-</p>
-<h1>Home page</h1>
-
-<p>
-    Hello world !
-</p>
-
-<h1>Home page</h1>
-
-<p>
-    Hello world !
-</p>
 {% endblock %}

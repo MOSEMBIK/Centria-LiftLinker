@@ -24,48 +24,174 @@
 {% block navbar2 %}
     <a class="nav-link hoverlink" id="body-about-button" href="#" onclick="switch_body('about')" style="color: #A1DCE9; text-decoration: underline; margin-right: .5em;">Who are we ?</a>
     <a class="nav-link hoverlink" id="body-contact-button" href="#" onclick="switch_body('contact')" style="color: #ffffff; margin-right: .5em;">Contact us</a>
+    <a class="nav-link hoverlink" id="body-terms-button" href="#" onclick="switch_body('terms')" style="color: #ffffff; margin-right: .5em;">Terms</a>
 {% endblock %}
 
 {% block body %}
+    {% load static %}
     <script>
         function switch_body(div_to_use) {
             if (div_to_use == 'about') {
                 document.getElementById('body-about').style.display = 'block';
                 document.getElementById('body-contact').style.display = 'none';
+                document.getElementById('body-terms').style.display = 'none';
                 
                 document.getElementById('body-about-button').style.color = '#A1DCE9';
                 document.getElementById('body-contact-button').style.color = '#ffffff';
+                document.getElementById('body-terms-button').style.color = '#ffffff';
                 
                 document.getElementById('body-about-button').style.textDecoration = 'underline';
                 document.getElementById('body-contact-button').style.textDecoration = 'none';
+                document.getElementById('body-terms-button').style.textDecoration = 'none';
 
             } else if (div_to_use == 'contact') {
                 document.getElementById('body-about').style.display = 'none';
                 document.getElementById('body-contact').style.display = 'block';
+                document.getElementById('body-terms').style.display = 'none';
                 
                 document.getElementById('body-about-button').style.color = '#ffffff';
                 document.getElementById('body-contact-button').style.color = '#A1DCE9';
+                document.getElementById('body-terms-button').style.color = '#ffffff';
                 
                 document.getElementById('body-about-button').style.textDecoration = 'none';
                 document.getElementById('body-contact-button').style.textDecoration = 'underline';
+                document.getElementById('body-terms-button').style.textDecoration = 'none';
+
+            } else if (div_to_use == 'terms') {
+                document.getElementById('body-about').style.display = 'none';
+                document.getElementById('body-contact').style.display = 'none';
+                document.getElementById('body-terms').style.display = 'block';
+                
+                document.getElementById('body-about-button').style.color = '#ffffff';
+                document.getElementById('body-contact-button').style.color = '#ffffff';
+                document.getElementById('body-terms-button').style.color = '#A1DCE9';
+                
+                document.getElementById('body-about-button').style.textDecoration = 'none';
+                document.getElementById('body-contact-button').style.textDecoration = 'none';
+                document.getElementById('body-terms-button').style.textDecoration = 'underline';
 
             }
         }
     </script>
 
     <div class="h-100 w-100" id="body-about" style="display: block;">
-        <h1>About us.</h1>
+        <h1>The TEAM</h1>
+        <div class="d-flex flex-row justify-content-evenly align-items-center" id="h-github">
+            <a href="https://www.linkedin.com/in/mkhaddan/" target="_blank" class="zoomhover" style="font-size: 22px; color: white; text-decoration: none;">
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <img class="m-3" src="{% static 'img/Mohammad_photo.jpg' %}" style="filter: blur(5px); border-radius: 50%; width: 6em;">
+                    <p>Mohammad</p>
+                    <p style="color: #ADADAD;">CEO</p>
+                </div>
+            </a>
 
+            <a href="https://www.linkedin.com/in/nicolashanquez/" target="_blank" class="zoomhover" style="font-size: 22px; color: white; text-decoration: none;">
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <img class="m-3" src="{% static 'img/Mohammad_photo.jpg' %}" style="filter: blur(5px); border-radius: 50%; width: 6em;">
+                    <p>Mohammad</p>
+                    <p style="color: #ADADAD;">DEVELOPER</p>
+                </div>
+            </a>
+            
+
+            <a href="https://www.linkedin.com/in/thomas-levier-8a10b3189/" target="_blank" class="zoomhover" style="font-size: 22px; color: white; text-decoration: none;">
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <img class="m-3" src="{% static 'img/Mohammad_photo.jpg' %}" style="filter: blur(5px); border-radius: 50%; width: 6em;">
+                    <p>Mohammad</p>
+                    <p style="color: #ADADAD;">INTEGRATOR</p>
+                </div>
+            </a>
+        </div>
+        <br><br>
+
+        <!-- PART 2 -->
+        <h1>Our MISSION</h1>
         <p>
-            Hello world !
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In accumsan ut dui nec porttitor. Proin sem risus, 
+            rhoncus ut diam vel, commodo lacinia augue. Donec sem lacus, sollicitudin sit amet eleifend ac, facilisis et 
+            enim. Donec tincidunt id nunc vitae tincidunt. Suspendisse facilisis ipsum urna, sed scelerisque velit 
+            volutpat nec. Integer augue lacus, finibus ut posuere sed, egestas sed magna. In malesuada finibus turpis, 
+            vel iaculis quam mollis sit amet. Nullam facilisis elit et fringilla dictum. Praesent elit neque, finibus 
+            vitae molestie nec, gravida ac sem. Nulla lobortis leo sed lacus interdum rhoncus. Curabitur tempus felis 
+            ut lacus aliquet vehicula. Pellentesque velit tellus, rhoncus non orci id, tincidunt sagittis massa.
+            <br><br>
+            Vivamus pretium, metus eleifend ultricies facilisis, neque lorem placerat nibh, vitae mattis arcu velit non 
+            sapien. Nam scelerisque non mauris et blandit. Quisque venenatis neque dolor, sit amet interdum massa tincidunt 
+            aliquet. Donec congue egestas augue, id porttitor lectus bibendum at. Aliquam dictum gravida purus vitae 
+            pharetra. Cras condimentum scelerisque arcu a vestibulum. Orci varius natoque penatibus et magnis dis 
+            parturient montes, nascetur ridiculus mus. Integer vestibulum nibh tortor, maximus laoreet enim lobortis sit 
+            amet. Maecenas erat ligula, tincidunt eu enim vel, placerat volutpat neque. Suspendisse efficitur ante ut leo 
+            feugiat, ac mollis dolor vestibulum. Aenean scelerisque turpis nulla, eu mattis turpis aliquet vitae.
         </p>
     </div>
-
     <div class="h-100 w-100" id="body-contact" style="display: none;">
-        <h1>Contact us.</h1>
+        <h1>Contact us</h1>
+        <h2 style="color: #ffffff;">Social Networks</h2>
+        <div class="d-flex justify-content-evenly">
+            <a href="https://instagram.com" target="_blank"><img style="max-width: 4em;" src="{% static 'img/insta.png' %}"/></a>
+            <a href="https://twitter.com" target="_blank"><img style="max-width: 4em;" src="{% static 'img/twitter.png' %}"/></a>
+            <a href="https://linkedin.com/in/mkhaddan/" target="_blank"><img style="max-width: 4em;" src="{% static 'img/linkedin.png' %}"/></a>
+        </div>
+        <br><br>
+        <h2 style="color: #ffffff;">Send us a message</h2>
+        <form class="d-flex flex-column align-items-center">
+            {% csrf_token %}
+            <!-- Subject -->
+            <div style="margin: 1.5em 0px 0px 1em; background-color:#3e364f; border-radius: 10px; margin-right: 1em;">
+                <input class="global_search_input" style="color: #8B8B8B; margin: 5px 10px 5px 10px; width: 700px; background: none; border: none;" type="text" maxlength="60" name="title" id="title" placeholder="Subject" required>
+            </div>
+            <!-- Content -->
+            <div style="margin: 1.5em 0px 0px 1em; background-color:#3e364f; border-radius: 10px; margin-right: 1em;">
+                <textarea class="global_search_input" style="resize: none; color: #8B8B8B; margin: 5px 10px 5px 10px; width: 700px; height: 400px; background: none; border: none;" maxlength="3000" name="content" id="content" placeholder="Message" required></textarea>
+            </div>
+            <br>
+            <!-- submit button -->
+            <div class="w-100 d-flex justify-content-center">
+                <button class="hoverbutton" style="background-color:#a1dce9; padding: 5px 10px 5px 10px; border: none; border-radius: 10px; margin-right: 1em; color: #514669; width: 25%;" type="submit">Send</button>
+            </div>
+        </form>
+        <br><br><br>
+    </div>
 
+    <div class="h-100 w-100" id="body-terms" style="display: none;">
+        <h1>Terms</h1>
         <p>
-            Hello world !
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In accumsan ut dui nec porttitor. Proin sem risus, 
+            rhoncus ut diam vel, commodo lacinia augue. Donec sem lacus, sollicitudin sit amet eleifend ac, facilisis et 
+            enim. Donec tincidunt id nunc vitae tincidunt. Suspendisse facilisis ipsum urna, sed scelerisque velit 
+            volutpat nec. Integer augue lacus, finibus ut posuere sed, egestas sed magna. In malesuada finibus turpis, 
+            vel iaculis quam mollis sit amet. Nullam facilisis elit et fringilla dictum. Praesent elit neque, finibus 
+            vitae molestie nec, gravida ac sem. Nulla lobortis leo sed lacus interdum rhoncus. Curabitur tempus felis 
+            ut lacus aliquet vehicula. Pellentesque velit tellus, rhoncus non orci id, tincidunt sagittis massa.
+            <br><br>
+            Vivamus pretium, metus eleifend ultricies facilisis, neque lorem placerat nibh, vitae mattis arcu velit non 
+            sapien. Nam scelerisque non mauris et blandit. Quisque venenatis neque dolor, sit amet interdum massa tincidunt 
+            aliquet. Donec congue egestas augue, id porttitor lectus bibendum at. Aliquam dictum gravida purus vitae 
+            pharetra. Cras condimentum scelerisque arcu a vestibulum. Orci varius natoque penatibus et magnis dis 
+            parturient montes, nascetur ridiculus mus. Integer vestibulum nibh tortor, maximus laoreet enim lobortis sit 
+            amet. Maecenas erat ligula, tincidunt eu enim vel, placerat volutpat neque. Suspendisse efficitur ante ut leo 
+            feugiat, ac mollis dolor vestibulum. Aenean scelerisque turpis nulla, eu mattis turpis aliquet vitae.
+            <br><br>
+            Donec quis lorem at diam commodo viverra at vitae dolor. Nullam nec lacus leo. Phasellus quis sapien non lorem 
+            consectetur sodales. Suspendisse interdum quam dolor, nec iaculis erat aliquet nec. Duis lobortis elit vel quam 
+            iaculis sollicitudin. Proin aliquet vestibulum nisi, vitae accumsan nulla facilisis in. Suspendisse potenti. 
+            Vestibulum et metus non risus scelerisque finibus sed ac quam. Sed aliquam volutpat urna, eu porta augue 
+            sagittis dictum. Vivamus gravida justo ut tortor condimentum, eu egestas libero efficitur. Suspendisse vel 
+            interdum felis. Cras ut feugiat massa, vitae malesuada ante. Phasellus ac dui dolor.
+            <br><br>
+            Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla sed mauris arcu. 
+            Duis feugiat sem vitae nulla posuere, vitae porttitor massa gravida. Aliquam ultricies mi dolor, vitae volutpat 
+            nulla aliquet ac. Duis tempor sapien et dapibus aliquet. Nullam vitae malesuada erat. Integer velit dolor, 
+            tincidunt at sagittis id, sodales vel ex. Mauris ac velit ipsum. Suspendisse iaculis eget erat a pulvinar.
+            <br><br>
+            Sed placerat mauris eu molestie ullamcorper. Phasellus cursus lacinia viverra. Nam hendrerit viverra ipsum quis 
+            malesuada. Vivamus feugiat diam ut lorem mattis, ut ultricies neque ultrices. Curabitur vel pellentesque mauris. 
+            Mauris egestas aliquet enim id accumsan. Integer semper pulvinar tortor, et dictum lacus vestibulum imperdiet. 
+            Maecenas mattis enim a blandit consectetur. Cras mauris leo, semper id libero non, interdum accumsan ante. 
+            Suspendisse pellentesque at mauris hendrerit hendrerit. Mauris interdum quam sodales gravida sagittis. Phasellus 
+            id finibus libero. Nunc accumsan lobortis tincidunt. Duis eu nisl nec ipsum tristique eleifend sit amet a felis. 
+            Suspendisse aliquet nisl leo, vel hendrerit erat cursus id. Phasellus consectetur, ante sit amet fermentum 
+            dapibus, ligula nunc volutpat nunc, sed porttitor diam augue vitae justo.
         </p>
     </div>
 {% endblock %}

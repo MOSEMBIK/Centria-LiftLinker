@@ -41,8 +41,8 @@
                 subcategory.appendChild(option1);
 
                 var option2 = document.createElement("option");
-                option2.value = "recepies";
-                option2.text = "Recipies";
+                option2.value = "recipes";
+                option2.text = "Recipes";
                 subcategory.appendChild(option2);
 
                 var option3 = document.createElement("option");
@@ -50,15 +50,15 @@
                 option3.text = "Suplements";
                 subcategory.appendChild(option3);
             } 
-            else if (category === "wheight") {
+            else if (category === "weight") {
                 var option1 = document.createElement("option");
                 option1.value = "questions";
                 option1.text = "Questions";
                 subcategory.appendChild(option1);
 
                 var option2 = document.createElement("option");
-                option2.value = "freewheights";
-                option2.text = "Free wheights";
+                option2.value = "freeweights";
+                option2.text = "Free weights";
                 subcategory.appendChild(option2);
 
                 var option3 = document.createElement("option");
@@ -106,34 +106,50 @@
             }
         }
     </script>
-
-    <form method="post">
+    <h1>New Post</h1>
+    <form class="d-flex flex-column align-items-center" method="post">
         {% csrf_token %}
         <!-- Subject -->
-        <label for="title">Subject :</label>
-        <input type="text" maxlength="60" name="title" id="title" required>
+        <div style="margin: 1.5em 0px 0px 1em; background-color:#3e364f; border-radius: 10px; margin-right: 1em;">
+            <input class="global_search_input" style="color: #8B8B8B; margin: 5px 10px 5px 10px; width: 700px; background: none; border: none;" type="text" maxlength="60" name="title" id="title" placeholder="Subject" required>
+        </div>
         <br>
         <!-- Content -->
-        <label for="content">Content :</label>
-        <textarea maxlength="3000" name="content" id="content" required></textarea>
+        <div style="margin: 1.5em 0px 0px 1em; background-color:#3e364f; border-radius: 10px; margin-right: 1em;">
+            <textarea class="global_search_input" style="resize: none; color: #8B8B8B; margin: 5px 10px 5px 10px; width: 700px; height: 400px; background: none; border: none;" maxlength="3000" name="content" id="content" placeholder="Content" required></textarea>
+        </div>
         <br>
         <!-- Category -->
-        <label for="category">Category :</label>
-        <select id="category" name="category" onchange="switch_subcategory()" required>
-            <option disabled selected></option>
-            <option value="nutrition">Nutrition</option>
-            <option value="wheight">Wheight Lifting</option>
-            <option value="calisthenics">Calisthenics</option>
-            <option value="crossfit">Cross-Fit</option>
-            <option value="other">Other</option>
-        </select>
+        <div class="d-flex justify-content-between">
+            <!-- Category -->
+            <div>
+                <label style="color: #8B8B8B;" for="category">Category :</label><br>
+                <div style="background-color:#3e364f; border-radius: 10px; margin-right: 1em;">
+                    <select class="global_search_input" style="color: #8B8B8B; margin: 5px 10px 5px 10px; width: 300px; background: none; border: none;" id="category" name="category" onchange="switch_subcategory()" required>
+                        <option disabled selected></option>
+                        <option value="nutrition">Nutrition</option>
+                        <option value="weight">Weight Lifting</option>
+                        <option value="calisthenics">Calisthenics</option>
+                        <option value="crossfit">Cross-Fit</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+            <!-- SubCategory -->
+            <div>
+                <label style="color: #8B8B8B;" for="subcategory">Sub-category :</label><br>
+                <div style="background-color:#3e364f; border-radius: 10px; margin-right: 1em;">            
+                    <select class="global_search_input" style="color: #8B8B8B; margin: 5px 10px 5px 10px; width: 300px; background: none; border: none;" id="subcategory" name="subcategory" required>
+                        <!-- Dynamic option with JS -->
+                    </select>
+                </div>
+            </div>
+        </div>
         <br>
-        <!-- SubCategory -->
-        <label for="subcategory">Sub-category :</label>
-        <select id="subcategory" name="subcategory" required>
-            <!-- Dynamic option with JS -->
-        </select>
-        <br>
-        <button type="submit">Post</button>
+        <!-- submit button -->
+        <div class="w-100 d-flex justify-content-center"> 
+            <button class="hoverbutton" style="background-color:#A41A1A; padding: 5px 10px 5px 10px; border: none; border-radius: 10px; margin-right: 1em; color: #A1DCE9; width: 25%;" onclick="window.location.href='{% url 'forumindex' %}'">Cancel</button> 
+            <button class="hoverbutton" style="background-color:#a1dce9; padding: 5px 10px 5px 10px; border: none; border-radius: 10px; margin-right: 1em; color: #514669; width: 25%;" type="submit">Post</button>
+        </div>
     </form>
 {% endblock %}

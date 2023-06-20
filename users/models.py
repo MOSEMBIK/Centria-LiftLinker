@@ -6,8 +6,8 @@ class User(models.Model):
     username = models.CharField(max_length=25, primary_key=True)
     password = models.CharField(max_length=500)
 
-    profile_pic = models.ImageField(upload_to='profile_pics', default=None)
-    profil_bio = models.TextField(max_length=500, default="")
+    profile_pic = models.ImageField(upload_to='profile_pics', default=None, blank=True, null=True)
+    profil_bio = models.TextField(max_length=500, default="", blank=True, null=True)
 
     score = models.IntegerField(default=0)
 

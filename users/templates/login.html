@@ -27,16 +27,18 @@
 {% endblock %}
 
 {% block body %}
-    <form method="post">
+    <h1>Login</h1>
+    <form class="d-flex flex-column align-items-center" action="{% url 'login' %}" method="post">
         {% csrf_token %}
         <!-- username -->
-        <label for="username">Username:</label>
-        <input type="text" name="username" id="username" required>
+        <div style="margin: 1.5em 0px 0px 1em; background-color:#3e364f; border-radius: 10px; margin-right: 1em;">
+            <input class="global_search_input" style="margin: 5px 10px 5px 10px; width: 300px; background: none; border: none;" type="text" maxlength="25" name="username" id="username" placeholder="Username" required>
+        </div>
         <br>
         <!-- password -->
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" required>
-        <br>
-        <button type="submit">Login</button>
+        <div style="margin: 1.5em 0px 0px 1em; background-color:#3e364f; border-radius: 10px; margin-right: 1em;">
+            <input class="global_search_input" style="margin: 5px 10px 5px 10px; width: 300px; background: none; border: none;" type="password" maxlength="500" name="password" id="password" placeholder="Password" required>
+        </div><br>
+        <button class="hoverbutton" style="background-color:#a1dce9; padding: 5px 10px 5px 10px; border: none; border-radius: 10px; margin-right: 1em; color: #514669; width: 25%;" type="submit">Login</button>
     </form>
 {% endblock %}

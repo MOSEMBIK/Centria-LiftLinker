@@ -3,7 +3,35 @@
 {% block title %}Forum - LiftLinker{% endblock %}
 
 {% block cssstyle %}
+    <style>
+        .post_title {
+            font-size: 2em;
+            text-decoration: none;
+            color: #ffffff;
+        }
 
+        .post_author {
+            font-size: 1em;
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        .post_author:hover {
+            text-decoration: underline;
+            color: #ffffff;
+        }
+
+        .comment_author {
+            font-size: 1.5em;
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        .comment_author:hover {
+            text-decoration: underline;
+            color: #ffffff;
+        }
+    </style>
 {% endblock %}
 
 {% block nav %}
@@ -26,21 +54,9 @@
 {% endblock %}
 
 {% block navbar2 %}
-    {% if session.username %}
-        <div class="hoverbutton" style="background-color:#a1dce9; border-radius: 10px; margin-right: 1em;">
-            <a class="nav-link" href="{% url 'newpost' %}" style="color: #514669;">New Subject</a>
-        </div>
-    {% else %}
-        <div class="hoverbutton" style="background-color:#a1dce9; border-radius: 10px; margin-right: 1em;">
-            <a class="nav-link" href="{% url 'login' %}" style="color: #514669;">New Subject</a>
-        </div>
-    {% endif %}
-    <a class="nav-link hoverlink" href="" style="color: #A1DCE9; text-decoration: underline; margin-right: .5em;">Trend</a>
-    <a class="nav-link hoverlink" href="" style="color: #ffffff; margin-right: .5em;">Nutrition</a>
-    <a class="nav-link hoverlink" href="" style="color: #ffffff; margin-right: .5em;">Wheight</a>
-    <a class="nav-link hoverlink" href="" style="color: #ffffff; margin-right: .5em;">Calisthenics</a>
-    <a class="nav-link hoverlink" href="" style="color: #ffffff; margin-right: .5em;">Cross-Fit</a>
-    <a class="nav-link hoverlink" href="" style="color: #ffffff; margin-right: .5em;">Other</a>
+    <div class="hoverbutton" style="background-color:#a1dce9; border-radius: 10px; margin-right: 1em;">
+        <a onclick="window.history.back()" class="nav-link" href="#" style="color: #514669;">Return ↩️</a>
+    </div>
 {% endblock %}
 
 {% block body %}
@@ -48,47 +64,67 @@
         function closecomment() {
             document.getElementById('comment_form').style.display = "none";
         }
+        function gotologin() {
+            window.location.href = "{% url 'login' %}";
+        }
     </script>
-    <div id="comment_form" style="display: none; width: 680px; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #f0f0f0;">
-        <h2>Awnser to the post</h2>
-        <a href="#" onclick="closecomment()">X</a>
-        <form action="#" method="POST">
-            {% csrf_token %}
-            <input type="hidden" id="parentID" name="parentID" value="{{ post.postID }}">
-            <textarea id="content" name="content" required></textarea><br>
-            <input style="color: #514669;" type="submit" value="Send">
-        </form>
+    <div id="comment_form" style="display: none; position: fixed; top: 0px; left: 0px;">
+        <div style="box-shadow: 0px 0px 80px 20px #514669; padding: 30px; border-radius: 10px; width: 680px; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #3E364F; z-index: 10000000;">
+            <h2 style="color: #ffffff;">Awnser to the post</h2>
+            <a style="position: fixed; padding: 0px 5px 0px 5px; top: 5px; right: 10px; color: #A41A1A; text-decoration: none; border: 1px solid; border-radius: 7px;" href="#" onclick="closecomment()">X</a>
+            <form action="#" method="POST">
+                {% csrf_token %}
+                <input type="hidden" id="parentID" name="parentID" value="{{ post.postID }}">
+                <textarea style="resize: none; height: 550px; width: 100%; border: none; background-color: #514669;" id="content" name="content" placeholder="Comment..." required></textarea><br>
+                <input class="hoverbutton" style="margin-left: 45%; padding: 5px 10px 5px 10px; border: none; border-radius: 10px; background-color: #a1dce9; color: #514669;" type="submit" value="Send">
+            </form>
+        </div>
+        <div style="opacity: 0.7; width: 100%; height: 100%; position: fixed; top: 0px; left: 0px; background-color: #3E364F;"></div>
     </div>
 
     {% if post %}
         <div>
-            <p> {{ post.title }} </p>
-            <a href="{% url 'user' username=post.author %}"> {{ post.author }} </a>
-            <p> {{ post.content }} </p>                
+            <b class="post_title">{{ post.title }} </b><br>
+            <i style="color: #8B8B8B">by <a class="post_author" href="{% url 'user' username=post.author %}">{{ post.author }}</a> - {{ post.date|date:"d/m/Y - H:i" }}</i><br><br>
+            <p style="color: #88A2FE"> {{ post.content }} </p>                
             {% if session.username %}
                 <script>
                     function opencomment() {
                         document.getElementById('comment_form').style.display = "block";
                     }
                 </script>
-                <div class="hoverbutton" style="background-color:#a1dce9; border-radius: 10px; margin-right: 1em;">
-                    <a style="color: #514669; width: 100%;" href="#" onclick="opencomment()">Comment</a>
+                <div class="d-flex justify-content-between">
+                    {% if post.status == 1 %}
+                        <button class="hoverbutton" style="background-color:#514669; padding: 5px 10px 5px 10px; border: none; border-radius: 10px; margin-right: 1em; color: #8B8B8B; width: 25%;">Comment</button>
+                    {% else %}
+                        <button class="hoverbutton" style="background-color:#a1dce9; padding: 5px 10px 5px 10px; border: none; border-radius: 10px; margin-right: 1em; color: #514669; width: 25%;" onclick="opencomment()">Comment</button>
+                
+                        <form action="{% url 'archive' %}" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" id="postID" name="postID" value="{{ post.postID }}">
+                            <input class="hoverbutton" style="background-color:#A41A1A; padding: 5px 10px 5px 10px; border: none; border-radius: 10px; margin-right: 1em; color: #A1DCE9;" type="submit" value="Archive">
+                        </form>
+                    {% endif %}
                 </div>
             {% else %}
-                <div class="hoverbutton" style="background-color:#a1dce9; border-radius: 10px; margin-right: 1em;">
-                    <a style="color: #514669; width: 100%;" href="{% url 'login' %}">Comment</a>
+                <div onclick="gotologin()" class="hoverbutton" style="background-color:#a1dce9; padding: 5px 10px 5px 10px; border: none; border-radius: 10px; margin-right: 1em;">
+                    <a style="color: #514669;" href="#">Comment</a>
                 </div>
-            {% endif %}
+                {% endif %}
             <br>
         </div>
+
         {% for c in comments %}
-        <div>
-            <a href="{% url 'user' username=c.author %}"> {{ c.author }} </a>
-            <p> {{ c.content }} </p>
-            <br>
-        </div>
+            <div style="padding: 6px; margin-bottom: 25px; border-top: 2px solid #A1DCE9; border-left: 2px solid #A1DCE9; border-right: none; border-bottom: none;">
+                <a class="comment_author" href="{% url 'user' username=c.author %}"> {{ c.author }} </a><i style="color: #8B8B8B">- {{ c.date|date:"d/m/Y - H:i" }}</i>
+                <p style="color: #88A2FE"> {{ c.content }} </p>
+            </div>
         {% endfor %}
+
     {% else %}
-        404 Post not found
+        <p>
+            404 <br>
+            Post not found
+        </p>
     {% endif %}
 {% endblock %}

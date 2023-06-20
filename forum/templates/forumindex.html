@@ -3,7 +3,15 @@
 {% block title %}Forum - LiftLinker{% endblock %}
 
 {% block cssstyle %}
-
+    <style>
+        .post_card a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+        .post_card:hover a {
+            color: #FDA8FF;
+        }
+    </style>
 {% endblock %}
 
 {% block nav %}
@@ -53,7 +61,6 @@
 
     function resetDropdowns() {
         var dropdownIds = ['nutrition', 'weight', 'calisthenics', 'crossfit', 'other'];
-        var categoryIds = ['trend', 'nutrition', 'weight', 'calisthenics', 'crossfit', 'other'];
 
         dropdownIds.forEach(function (dropdownId) {
             var dropdownElement = document.getElementById(dropdownId + '-dropdown');
@@ -63,15 +70,9 @@
             categoryElement.style.color = '#ffffff';
             categoryElement.style.textDecoration = 'none';
         });
-
-        categoryIds.forEach(function (categoryId) {
-            var categoryElement = document.getElementById(categoryId);
-
-            if (categoryId !== 'nutrition' && categoryId !== 'weight' && categoryId !== 'calisthenics' && categoryId !== currentDropdown) {
-                categoryElement.style.color = '#ffffff';
-                categoryElement.style.textDecoration = 'none';
-            }
-        });
+        
+        document.getElementById('trend').style.color = '#ffffff';
+        document.getElementById('trend').style.textDecoration = 'none';
 
         if (currentBody) {
             var currentBodyElement = document.getElementById(currentBody);
@@ -79,13 +80,13 @@
         }
 
         if (currentItem) {
-            currentItem.style.color = '#ffffff';
+            currentItem.style.color = '#A1DCE9';
             currentItem.style.fontSize = '16px';
         }
     }
 
     function switchBody(bodyId, itemElement) {
-        var bodyIds = ['body-trend', 'body-nutrition-questions', 'body-nutrition-recipies', 'body-nutrition-supplements', 'body-weight-questions', 'body-weight-freeweights', 'body-weight-machines', 'body-calisthenics-questions', 'body-calisthenics-equipments', 'body-calisthenics-routines', 'body-crossfit-questions', 'body-crossfit-circuits', 'body-other-questions', 'body-other-other'];
+        var bodyIds = ['body-trend', 'body-nutrition-questions', 'body-nutrition-recipes', 'body-nutrition-supplements', 'body-weight-questions', 'body-weight-freeweights', 'body-weight-machines', 'body-calisthenics-questions', 'body-calisthenics-equipments', 'body-calisthenics-routines', 'body-crossfit-questions', 'body-crossfit-circuits', 'body-other-questions', 'body-other-other'];
     
         bodyIds.forEach(function(bodyId) {
             var bodyElement = document.getElementById(bodyId);
@@ -96,7 +97,7 @@
         selectedBodyElement.style.display = 'block';
     
         if (currentItem) {
-            currentItem.style.color = '#ffffff';
+            currentItem.style.color = '#A1DCE9';
             currentItem.style.fontSize = '16px';
         }
     
@@ -133,7 +134,7 @@
 <a class="nav-link hoverlink" id="nutrition" href="#" onclick="showDropdown('nutrition-dropdown')" style="color: #ffffff; margin-right: .5em;">Nutrition</a>
 <div id="nutrition-dropdown" style="display: none;">
     <a class="nav-link hoverlink" id="nutrition-questions" href="#" onclick="switchBody('body-nutrition-questions', this)" style="color: #A1DCE9; margin-right: .5em; font-size: 16px;">Questions</a>
-    <a class="nav-link hoverlink" id="nutrition-recipies" href="#" onclick="switchBody('body-nutrition-recipies', this)" style="color: #A1DCE9; margin-right: .5em; font-size: 16px;">Recipes</a>
+    <a class="nav-link hoverlink" id="nutrition-recipes" href="#" onclick="switchBody('body-nutrition-recipes', this)" style="color: #A1DCE9; margin-right: .5em; font-size: 16px;">Recipes</a>
     <a class="nav-link hoverlink" id="nutrition-supplements" href="#" onclick="switchBody('body-nutrition-supplements', this)" style="color: #A1DCE9; margin-right: .5em; font-size: 16px;">Supplements</a>
 </div>
 
@@ -165,61 +166,209 @@
 {% endblock %}
 
 {% block body %}
-<div id="body-trend">
-    {% if posts %}
-    There are {{ posts|length }} records:
-    {% for p in posts %}
-    <div>
-        <a href="{% url 'post' postID=p.postID %}"> {{ p.postID }} {{ p.title }} </a>
-        <p> {{ p.author }} </p>
-        <br>
+
+    <div id="body-trend">
+        <h1>Trending posts</h1>
+        {% if posts %}
+            {% for p in posts %}
+                <div onclick="window.location.href='{% url 'post' postID=p.postID %}'" class="post_card" style="margin: 10px; padding: 5px; background-color: #574A6D;">
+                    <a style="font-size: 1.3em;" href="#"> {{ p.title }} </a> <i style="color: #8B8B8B;">- {{ p.author }}</i><br>
+                    <p style="color: #88A2FE;">{{ p.content|slice:":50" }}...</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p> No posts found </p>
+        {% endif %}
     </div>
-    {% endfor %}
-    {% endif %}
-</div>
-<div id="body-nutrition-questions" style="display: none;">
-    <h1>Nutrition Questions</h1>
-</div>
-<div id="body-nutrition-recipies" style="display: none;">
-    <h1>Nutrition Recipies</h1>
-</div>
-<div id="body-nutrition-supplements" style="display: none;">
-    <h1>Nutrition Supplements</h1>
-</div>
 
-<div id="body-weight-questions" style="display: none;">
-    <h1>Weight Questions</h1>
-</div>
-<div id="body-weight-freeweights" style="display: none;">
-    <h1>Weight Free Weights</h1>
-</div>
-<div id="body-weight-machines" style="display: none;">
-    <h1>Weight Machines</h1>
-</div>
 
-<div id="body-calisthenics-questions" style="display: none;">
-    <h1>Calisthenics Questions</h1>
-</div>
-<div id="body-calisthenics-equipments" style="display: none;">
-    <h1>Calisthenics Equipments</h1>
-</div>
-<div id="body-calisthenics-routines" style="display: none;">
-    <h1>Calisthenics Routines</h1>
-</div>
 
-<div id="body-crossfit-questions" style="display: none;">
-    <h1>Crossfit Questions</h1>
-</div>
+    <!-- NUTRITION -->
+    <div id="body-nutrition-questions" style="display: none;">
+        <h1>Nutrition Questions</h1>
+        {% if filtered.nutrition.questions|length > 0 %}
+            {% for p in filtered.nutrition.questions %}
+                <div onclick="window.location.href='{% url 'post' postID=p.postID %}'" class="post_card" style="margin: 10px; padding: 5px; background-color: #574A6D;">
+                    <a style="font-size: 1.3em;" href="#"> {{ p.title }} </a> <i style="color: #8B8B8B;">- {{ p.author }}</i><br>
+                    <p style="color: #88A2FE;">{{ p.content|slice:":50" }}...</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p> No posts found </p>
+        {% endif %}
+    </div>
+    <div id="body-nutrition-recipes" style="display: none;">
+        <h1>Nutrition Recipes</h1>
+        {% if filtered.nutrition.recipes|length > 0 %}
+            {% for p in filtered.nutrition.recipes %}
+                <div onclick="window.location.href='{% url 'post' postID=p.postID %}'" class="post_card" style="margin: 10px; padding: 5px; background-color: #574A6D;">
+                    <a style="font-size: 1.3em;" href="#"> {{ p.title }} </a> <i style="color: #8B8B8B;">- {{ p.author }}</i><br>
+                    <p style="color: #88A2FE;">{{ p.content|slice:":50" }}...</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p> No posts found </p>
+        {% endif %}
+    </div>
+    <div id="body-nutrition-supplements" style="display: none;">
+        <h1>Nutrition Supplements</h1>
+        {% if filtered.nutrition.supplements|length > 0 %}
+            {% for p in filtered.nutrition.supplements %}
+                <div onclick="window.location.href='{% url 'post' postID=p.postID %}'" class="post_card" style="margin: 10px; padding: 5px; background-color: #574A6D;">
+                    <a style="font-size: 1.3em;" href="#"> {{ p.title }} </a> <i style="color: #8B8B8B;">- {{ p.author }}</i><br>
+                    <p style="color: #88A2FE;">{{ p.content|slice:":50" }}...</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p> No posts found </p>
+        {% endif %}
+    </div>
 
-<div id="body-crossfit-circuits" style="display: none;">
-    <h1>Crossfit Circuits</h1>
-</div>
 
-<div id="body-other-questions" style="display: none;">
-    <h1>Other Questions</h1>
-</div>
+    
+    <!-- WEIGHT -->
+    <div id="body-weight-questions" style="display: none;">
+        <h1>Weight Questions</h1>
+        {% if filtered.weight.questions|length > 0 %}
+            {% for p in filtered.weight.questions %}
+                <div onclick="window.location.href='{% url 'post' postID=p.postID %}'" class="post_card" style="margin: 10px; padding: 5px; background-color: #574A6D;">
+                    <a style="font-size: 1.3em;" href="#"> {{ p.title }} </a> <i style="color: #8B8B8B;">- {{ p.author }}</i><br>
+                    <p style="color: #88A2FE;">{{ p.content|slice:":50" }}...</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p> No posts found </p>
+        {% endif %}
+    </div>
+    <div id="body-weight-freeweights" style="display: none;">
+        <h1>Weight Free Weights</h1>
+        {% if filtered.weight.freeweights|length > 0 %}
+            {% for p in filtered.weight.freeweights %}
+                <div onclick="window.location.href='{% url 'post' postID=p.postID %}'" class="post_card" style="margin: 10px; padding: 5px; background-color: #574A6D;">
+                    <a style="font-size: 1.3em;" href="#"> {{ p.title }} </a> <i style="color: #8B8B8B;">- {{ p.author }}</i><br>
+                    <p style="color: #88A2FE;">{{ p.content|slice:":50" }}...</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p> No posts found </p>
+        {% endif %}
+    </div>
+    <div id="body-weight-machines" style="display: none;">
+        <h1>Weight Machines</h1>
+        {% if filtered.weight.machines|length > 0 %}
+            {% for p in filtered.weight.machines %}
+                <div onclick="window.location.href='{% url 'post' postID=p.postID %}'" class="post_card" style="margin: 10px; padding: 5px; background-color: #574A6D;">
+                    <a style="font-size: 1.3em;" href="#"> {{ p.title }} </a> <i style="color: #8B8B8B;">- {{ p.author }}</i><br>
+                    <p style="color: #88A2FE;">{{ p.content|slice:":50" }}...</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p> No posts found </p>
+        {% endif %}
+    </div>
 
-<div id="body-other-other" style="display: none;">
-    <h1>Other Other</h1>
-</div>
+
+    
+    <!-- CALISTHENICS -->
+    <div id="body-calisthenics-questions" style="display: none;">
+        <h1>Calisthenics Questions</h1>
+        {% if filtered.calisthenics.questions|length > 0 %}
+            {% for p in filtered.calisthenics.questions %}
+                <div onclick="window.location.href='{% url 'post' postID=p.postID %}'" class="post_card" style="margin: 10px; padding: 5px; background-color: #574A6D;">
+                    <a style="font-size: 1.3em;" href="#"> {{ p.title }} </a> <i style="color: #8B8B8B;">- {{ p.author }}</i><br>
+                    <p style="color: #88A2FE;">{{ p.content|slice:":50" }}...</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p> No posts found </p>
+        {% endif %}
+    </div>
+    <div id="body-calisthenics-equipments" style="display: none;">
+        <h1>Calisthenics Equipments</h1>
+        {% if filtered.calisthenics.equipments|length > 0 %}
+            {% for p in filtered.calisthenics.equipments %}
+                <div onclick="window.location.href='{% url 'post' postID=p.postID %}'" class="post_card" style="margin: 10px; padding: 5px; background-color: #574A6D;">
+                    <a style="font-size: 1.3em;" href="#"> {{ p.title }} </a> <i style="color: #8B8B8B;">- {{ p.author }}</i><br>
+                    <p style="color: #88A2FE;">{{ p.content|slice:":50" }}...</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p> No posts found </p>
+        {% endif %}
+    </div>
+    <div id="body-calisthenics-routines" style="display: none;">
+        <h1>Calisthenics Routines</h1>
+        {% if filtered.calisthenics.routines|length > 0 %}
+            {% for p in filtered.calisthenics.routines %}
+                <div onclick="window.location.href='{% url 'post' postID=p.postID %}'" class="post_card" style="margin: 10px; padding: 5px; background-color: #574A6D;">
+                    <a style="font-size: 1.3em;" href="#"> {{ p.title }} </a> <i style="color: #8B8B8B;">- {{ p.author }}</i><br>
+                    <p style="color: #88A2FE;">{{ p.content|slice:":50" }}...</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p> No posts found </p>
+        {% endif %}
+    </div>
+
+
+    
+    <!-- CROSS FIT -->
+    <div id="body-crossfit-questions" style="display: none;">
+        <h1>Crossfit Questions</h1>
+        {% if filtered.crossfit.questions|length > 0 %}
+            {% for p in filtered.crossfit.questions %}
+                <div onclick="window.location.href='{% url 'post' postID=p.postID %}'" class="post_card" style="margin: 10px; padding: 5px; background-color: #574A6D;">
+                    <a style="font-size: 1.3em;" href="#"> {{ p.title }} </a> <i style="color: #8B8B8B;">- {{ p.author }}</i><br>
+                    <p style="color: #88A2FE;">{{ p.content|slice:":50" }}...</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p> No posts found </p>
+        {% endif %}
+    </div>
+
+    <div id="body-crossfit-circuits" style="display: none;">
+        <h1>Crossfit Circuits</h1>
+        {% if filtered.crossfit.circuits|length > 0 %}
+            {% for p in filtered.crossfit.circuits %}
+                <div onclick="window.location.href='{% url 'post' postID=p.postID %}'" class="post_card" style="margin: 10px; padding: 5px; background-color: #574A6D;">
+                    <a style="font-size: 1.3em;" href="#"> {{ p.title }} </a> <i style="color: #8B8B8B;">- {{ p.author }}</i><br>
+                    <p style="color: #88A2FE;">{{ p.content|slice:":50" }}...</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p> No posts found </p>
+        {% endif %}
+    </div>
+
+
+    
+    <!-- OTHER -->
+    <div id="body-other-questions" style="display: none;">
+        <h1>Other Questions</h1>
+        {% if filtered.other.questions|length > 0 %}
+            {% for p in filtered.other.questions %}
+                <div onclick="window.location.href='{% url 'post' postID=p.postID %}'" class="post_card" style="margin: 10px; padding: 5px; background-color: #574A6D;">
+                    <a style="font-size: 1.3em;" href="#"> {{ p.title }} </a> <i style="color: #8B8B8B;">- {{ p.author }}</i><br>
+                    <p style="color: #88A2FE;">{{ p.content|slice:":50" }}...</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p> No posts found </p>
+        {% endif %}
+    </div>
+
+    <div id="body-other-other" style="display: none;">
+        <h1>Other Other</h1>
+        {% if filtered.other.other|length > 0 %}
+            {% for p in filtered.other.other %}
+                <div onclick="window.location.href='{% url 'post' postID=p.postID %}'" class="post_card" style="margin: 10px; padding: 5px; background-color: #574A6D;">
+                    <a style="font-size: 1.3em;" href="#"> {{ p.title }} </a> <i style="color: #8B8B8B;">- {{ p.author }}</i><br>
+                    <p style="color: #88A2FE;">{{ p.content|slice:":50" }}...</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p> No posts found </p>
+        {% endif %}
+    </div>
 {% endblock %}

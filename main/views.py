@@ -10,6 +10,8 @@ def index(request):
     return render(request, 'index.html', {'session': request.session})
 
 def about(request):
+    if request.method == 'POST':
+        return redirect('index')
     return render(request, 'about.html', {'session': request.session})
 
 # Serching user

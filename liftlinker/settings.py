@@ -19,17 +19,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-+ztfo&zr_#t5z#o*q=ps7_h(bmorsjnanf!o5=s_3)@6oj_(5k'
+#SECRET_KEY = 'django-insecure-+ztfo&zr_#t5z#o*q=ps7_h(bmorsjnanf!o5=s_3)@6oj_(5k'
+SECRET_KEY = 'ghvjkllc-sbqdjsilhbdndmvsofhbjnxkclmdsbuejnkzmvfshbidhsb__((*q=ps7_h(bmorsjnanf!o5=s_3)@6oj_(5k'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# SECURE_HSTS_SECONDS = 60
-# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-# SECURE_HSTS_PRELOAD = True
-# SECURE_SSL_REDIRECT = True
-# SESSION_COOKIE_SECURE = True
-# CSRF_TRUSTED_ORIGINS = ['https://liftlinker.mosembik.fr']
-# CSRF_COOKIE_SECURE = True
+DEBUG = False
+SECURE_HSTS_SECONDS = 60
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_TRUSTED_ORIGINS = ['https://liftlinker.mosembik.fr']
+CSRF_COOKIE_SECURE = True
 
 ALLOWED_HOSTS = [
     'liftlinker.mosembik.fr',
@@ -57,7 +58,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    #'django_extensions',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [

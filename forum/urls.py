@@ -6,4 +6,5 @@ urlpatterns = [
     path('', views.forumindex, name='forumindex'),
     path('post/<int:postID>', views.post, name='post'),
     path('newpost/', views.newpost, name='newpost'),
+    path('archive/', views.archive, name='archive'),
 ]
